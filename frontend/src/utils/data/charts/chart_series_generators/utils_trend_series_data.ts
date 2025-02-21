@@ -1,7 +1,7 @@
-import { TrendsData, SeriesItem } from "../../../../types/data_types";
+import { YearCallRecord, SeriesItem } from "../../../../types/data_types";
 
 export function generateTrendSeriesData(
-  dataToProcess: TrendsData[]
+  dataToProcess: YearCallRecord[]
 ): SeriesItem[] {
   const seriesData: SeriesItem[] = dataToProcess.flatMap((current) => {
     return [

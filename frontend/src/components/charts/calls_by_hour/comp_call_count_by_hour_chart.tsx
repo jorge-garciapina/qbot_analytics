@@ -6,7 +6,7 @@ in other components.
 
 import React, { useEffect } from "react";
 
-import { useLoginData } from "../../../hooks/hook_usecall_records";
+import { useLoginData } from "../../../hooks/fetch_data_hooks/hook_use_login_data";
 import {
   ChartTotals,
   DashboardChartInput,

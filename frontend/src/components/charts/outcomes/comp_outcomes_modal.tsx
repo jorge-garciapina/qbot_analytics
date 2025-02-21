@@ -1,6 +1,5 @@
 import React from "react";
 
-import { useAppointmentTrendsData } from "../../../hooks/hook_use_appointment_trends_data";
 import { generateTrendSeriesData } from "../../../utils/data/charts/chart_series_generators/utils_trend_series_data";
 import { useTranslation } from "react-i18next";
 
@@ -13,6 +12,10 @@ import { useClinicData } from "../../../hooks/use_clinic_data";
 import { DateRangeSelector } from "../../date_range_selector/comp_range_selector";
 import { useDate } from "../../../hooks/date_hooks/hook_use_date";
 
+import { useMultipleYearCallRecords } from "../../../hooks/fetch_data_hooks/hook_use_multiple_year_records";
+
+import { evaluateYear } from "../../../utils/dates/utils_extract_year";
+
 export const OutcomesModal: React.FC = () => {
   const { t } = useTranslation();
 
@@ -21,15 +24,18 @@ export const OutcomesModal: React.FC = () => {
   const initialDayLogic = useDate(initialDate);
   const endDayLogic = useDate(endDate);
 
-  // Fetch processed appointment trends data
-  const { processedData, isAnyPending } = useAppointmentTrendsData({
-    initialDate: initialDayLogic.date,
-    endDate: endDayLogic.date,
+  const initialYear = evaluateYear(initialDayLogic.date);
+  const endYear = evaluateYear(endDayLogic.date);
+
+  const { isPending, fetchedData } = useMultipleYearCallRecords({
+    queryKey: "get_multiple_year_data",
+    initialYear,
+    endYear,
   });
 
-  if (isAnyPending) return "Loading...";
+  if (isPending) return "Loading...";
 
-  const seriesData = generateTrendSeriesData(processedData);
+  const seriesData = generateTrendSeriesData(fetchedData!);
 
   const chartOptions = generateTrendsOptions({
     title: t("chartInformation.trendsChart.chartTitle"),

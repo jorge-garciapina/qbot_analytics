@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 
 import { DurationModal } from "./comp_duration_modal";
 
-import { useLoginData } from "../../../hooks/hook_usecall_records";
+import { useLoginData } from "../../../hooks/fetch_data_hooks/hook_use_login_data";
 import { DashboardChartInput, SeriesItem } from "../../../types/data_types";
 
 import { ChartOptions } from "../../../types/data_types";

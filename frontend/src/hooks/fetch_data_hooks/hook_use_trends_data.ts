@@ -1,5 +1,5 @@
-import { useYearCallRecords } from "./hook_usecall_records";
-import { TrendsData } from "../types/data_types";
+import { useYearCallRecords } from "./hook_use_year_call_records";
+import { TrendsData } from "../../types/data_types";
 /**
  * A helper function that fetches call records for a given year.
  *

@@ -57,7 +57,7 @@ export interface CallRecordsMigration {
   peakTimes: PeakTimes;
 }
 
-export interface YearCallRecords {
+export interface YearCallRecord {
   months: string[];
   year: number;
   scheduledCallsByMonth: number[];
@@ -288,7 +288,6 @@ export interface DateRange {
 }
 
 export interface TrendsData {
-  isPending: boolean;
   months: string[];
   scheduledCallsByMonth: number[];
   transferredCallsByMonth: number[];

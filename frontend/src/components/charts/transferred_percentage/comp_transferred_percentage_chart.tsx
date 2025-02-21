@@ -8,7 +8,7 @@ import {
   SeriesItem,
 } from "../../../types/data_types";
 
-import { useLoginData } from "../../../hooks/hook_usecall_records";
+import { useLoginData } from "../../../hooks/fetch_data_hooks/hook_use_login_data";
 
 import { ChartOptions } from "../../../types/data_types";
 import { DashboardChart } from "../../chart_factory/chart_dashboard/comp_chart_dahboard";
