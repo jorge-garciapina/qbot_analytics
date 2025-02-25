@@ -1,6 +1,6 @@
 import { Container, styled } from "@mui/material";
 
-export const STYLED_ActionToolbarDashboardChart_Container = styled(Container)(
+export const ActionToolbarDashboardChartContainer = styled(Container)(
   ({ theme }) => {
     // console.log(theme.spacing(2));
     // console.log(theme.spacing(1, 2));

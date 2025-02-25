@@ -1,21 +1,5 @@
 import { ReactNode } from "react";
 
-export interface RawCallRecord {
-  callId: string;
-  phoneNumber: string;
-  startTime: string; // Dates are received as strings from JSON
-  endTime: string;
-  reason: "scheduling" | "rescheduling" | "cancellation";
-  status: "scheduled" | "transferred";
-  failure_reason:
-    | "none"
-    | "dob_mismatch"
-    | "first_name_mismatch"
-    | "last_name_mismatch";
-}
-
-export type RawCallRecords = RawCallRecord[];
-
 interface HandlingOverviewDaily {
   chartKeys: string[];
   callsHandledByAI: number[];
@@ -132,13 +116,6 @@ export type SimpleDayTimeDistribution = {
   night: number;
 };
 
-export interface CallRecordsContextType {
-  callRecords: RawCallRecords | null;
-  loading: boolean;
-  error: string | null;
-  fetchCallRecords: (year: number, timeInterval?: number) => Promise<void>;
-}
-
 export interface ComponentInput {
   year?: number;
   daysInterval: number;
@@ -249,6 +226,10 @@ export interface ModalChartInput {
 
 export interface ModalChartOptions {
   options: ChartOptions;
+  initialDateModifier: (date: string) => void;
+  endDateModifier: (date: string) => void;
+  initialDate: string;
+  endDate: string;
 }
 export interface DashboardChartProps {
   options: ChartOptions;
@@ -288,6 +269,7 @@ export interface DateRange {
 }
 
 export interface TrendsData {
+  isPending?: boolean;
   months: string[];
   scheduledCallsByMonth: number[];
   transferredCallsByMonth: number[];

@@ -1,7 +1,6 @@
-import { STYLED_Modal_Container } from "../../mui_configurations/styled_components/chart_sections/styled_modal_container";
+import { ModalContainer } from "../../mui_configurations/styled_components/chart_sections/styled_modal_container";
 import { Close } from "@mui/icons-material";
-import { STYLED_CloseModal_Button } from "../../mui_configurations/styled_components/buttons/styled_close_modal";
-
+import { CloseModalButton } from "../../mui_configurations/styled_components/buttons/styled_close_modal";
 interface TestingModalProps {
   children: React.ReactNode;
   onClose: () => void;
@@ -12,12 +11,12 @@ export const ChartModalContainer: React.FC<TestingModalProps> = ({
   onClose,
 }) => {
   return (
-    <STYLED_Modal_Container>
-      <STYLED_CloseModal_Button onClick={onClose}>
+    <ModalContainer>
+      <CloseModalButton onClick={onClose}>
         <Close />
-      </STYLED_CloseModal_Button>
+      </CloseModalButton>
 
       {children}
-    </STYLED_Modal_Container>
+    </ModalContainer>
   );
 };

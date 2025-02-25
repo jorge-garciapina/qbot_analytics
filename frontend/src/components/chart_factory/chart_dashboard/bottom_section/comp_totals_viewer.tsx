@@ -1,4 +1,4 @@
-import { STYLED_TotalsViewer_Container } from "../../../../mui_configurations/styled_components/chart_sections/bottom_section/styled_totals_viewer";
+import { TotalsViewerContainer } from "../../../../mui_configurations/styled_components/chart_sections/bottom_section/styled_totals_viewer";
 
 interface TotalsViewerInput {
   name: string;
@@ -6,9 +6,9 @@ interface TotalsViewerInput {
 }
 export const TotalsViewer: React.FC<TotalsViewerInput> = ({ name, value }) => {
   return (
-    <STYLED_TotalsViewer_Container>
+    <TotalsViewerContainer>
       <h1>{name}</h1>
       <h1>{value.toFixed(2)}</h1>
-    </STYLED_TotalsViewer_Container>
+    </TotalsViewerContainer>
   );
 };

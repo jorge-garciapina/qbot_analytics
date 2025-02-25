@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 
-import { OutcomesModal } from "./comp_outcomes_modal";
+import { HandlingOverviewModal } from "./comp_handling_overview_modal";
+import { DashboardChart } from "../../chart_factory/chart_dashboard/comp_chart_dahboard";
+
 import { useLoginData } from "../../../hooks/fetch_data_hooks/hook_use_login_data";
 
 import {
@@ -10,16 +12,15 @@ import {
   SeriesItem,
 } from "../../../types/data_types";
 
-import { DashboardChart } from "../../chart_factory/chart_dashboard/comp_chart_dahboard";
-
 import { useTranslation } from "react-i18next";
 
-import { generateCallOutcomesSeriesData } from "../../../utils/data/charts/chart_series_generators/utils_call_outcomes_series_data";
-import { generateCallOutcomesOptions } from "../../../utils/data/charts/chart_options_generators/utils_call_outcomes_options";
-import { generateCallOutcomesTotals } from "../../../utils/data/charts/chart_totals_generators/utils_call_outcomes_totals";
-
+import {
+  generateCallOutcomesSeriesData,
+  generateCallOutcomesOptions,
+  generateCallOutcomesTotals,
+} from "../../../utils/data/charts";
 // Main Component
-const CallOutcomesStackedChart: React.FC<DashboardChartInput> = ({
+const HandlingOverviewChart: React.FC<DashboardChartInput> = ({
   initialDate,
   endDate,
   refreshTrigger,
@@ -46,49 +47,56 @@ const CallOutcomesStackedChart: React.FC<DashboardChartInput> = ({
     // GENERATE SERIES DATA:
     const seriesData: SeriesItem[] = generateCallOutcomesSeriesData({
       fetchedData: fetchedData,
-      callsHandledByAIName: t("chartInformation.callOutcomesChart.handledByAI"),
+      callsHandledByAIName: t("chartInformation.callHandlingChart.handledByAI"),
       callsHandledByHumanName: t(
-        "chartInformation.callOutcomesChart.handledByHuman"
+        "chartInformation.callHandlingChart.handledByHuman"
       ),
     });
 
+    const title = t("chartInformation.callHandlingChart.chartTitle");
+    const xAxisName = t("chartInformation.callHandlingChart.xAxisName");
+    const yAxisName = t("chartInformation.callHandlingChart.yAxisName");
     // GENERATE OPTIONS:
     const chartOptions: ChartOptions = generateCallOutcomesOptions({
       fetchedData: fetchedData,
-      title: t("chartInformation.callOutcomesChart.chartTitle"),
-      xAxisName: t("chartInformation.callOutcomesChart.xAxisName"),
+      title: title,
+      xAxisName: xAxisName,
       seriesData: seriesData,
-      yAxisName: t("chartInformation.callOutcomesChart.yAxisName"),
+      yAxisName: yAxisName,
     });
 
     // GENERATE TOTALS
     const callOutcomesTotals: ChartTotals = generateCallOutcomesTotals({
       fetchedData: fetchedData,
-      totalName: t("chartInformation.callOutcomesChart.totals.total"),
+      totalName: t("chartInformation.callHandlingChart.totals.total"),
       handledByAIName: t(
-        "chartInformation.callOutcomesChart.totals.handledByAI"
+        "chartInformation.callHandlingChart.totals.handledByAI"
       ),
       handledByHumanName: t(
-        "chartInformation.callOutcomesChart.totals.handledByHuman"
+        "chartInformation.callHandlingChart.totals.handledByHuman"
       ),
     });
 
     return (
-      <>
-        <DashboardChart
-          options={chartOptions}
-          totals={callOutcomesTotals}
-          openModal={() => {
-            renderModal(<OutcomesModal />);
-          }}
-        />
-      </>
+      <DashboardChart
+        options={chartOptions}
+        totals={callOutcomesTotals}
+        openModal={() => {
+          renderModal(
+            <HandlingOverviewModal
+              title={title}
+              xAxisName={xAxisName}
+              yAxisName={yAxisName}
+            />
+          );
+        }}
+      />
     );
   }
 };
 
 // Memoize the component to prevent re-rendering on `initialDate` changes
-export default React.memo(CallOutcomesStackedChart, (prevProps, nextProps) => {
+export default React.memo(HandlingOverviewChart, (prevProps, nextProps) => {
   return (
     prevProps.endDate === nextProps.endDate &&
     prevProps.initialDate === nextProps.initialDate

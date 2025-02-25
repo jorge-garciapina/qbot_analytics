@@ -20,9 +20,11 @@ import { useTranslation } from "react-i18next";
 
 import { PeakHoursModal } from "./comp_peak_hours_modal";
 
-import { generateCallCountByHourSeriesData } from "../../../utils/data/charts/chart_series_generators/utils_call_count_by_hour_series";
-import { generateCallCountByHourOptions } from "../../../utils/data/charts/chart_options_generators/utils_call_count_by_hour_options";
-import { generateCallCountByHourTotals } from "../../../utils/data/charts/chart_totals_generators/utils_call_count_by_hour_totals";
+import {
+  generateCallCountByHourSeriesData,
+  generateCallCountByHourOptions,
+  generateCallCountByHourTotals,
+} from "./../../../utils/data/charts";
 
 export const CallCountByHourChart: React.FC<DashboardChartInput> = ({
   initialDate,
@@ -72,15 +74,13 @@ export const CallCountByHourChart: React.FC<DashboardChartInput> = ({
     });
 
     return (
-      <>
-        <DashboardChart
-          options={chartOptions}
-          totals={callCountByHourTotals}
-          openModal={() => {
-            renderModal(<PeakHoursModal />);
-          }}
-        />
-      </>
+      <DashboardChart
+        options={chartOptions}
+        totals={callCountByHourTotals}
+        openModal={() => {
+          renderModal(<PeakHoursModal />);
+        }}
+      />
     );
   }
 };

@@ -10,7 +10,7 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      "/calls": {
+      "/server_connect": {
         target: apiURL,
         changeOrigin: true,
         secure: false,

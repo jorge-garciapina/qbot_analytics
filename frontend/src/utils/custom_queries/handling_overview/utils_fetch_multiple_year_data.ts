@@ -1,4 +1,4 @@
-import { YearCallRecord } from "../../types/data_types";
+import { YearCallRecord } from "../../../types/data_types";
 
 export async function fetchMultipleYearData({
   queryKey,
@@ -12,7 +12,7 @@ export async function fetchMultipleYearData({
   }
 
   const dbResponse = await fetch(
-    `calls/multiple_year_data?initial_year=${initialYear}&end_year=${endYear}`
+    `server_connect/handling_overview/multiple_year_data?initial_year=${initialYear}&end_year=${endYear}`
   );
 
   if (!dbResponse.ok) {

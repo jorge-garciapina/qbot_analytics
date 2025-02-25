@@ -9,10 +9,11 @@ import { ChartOptions } from "../../../types/data_types";
 import { DashboardChart } from "../../chart_factory/chart_dashboard/comp_chart_dahboard";
 import { useTranslation } from "react-i18next";
 
-import { generateCallDurationSeriesData } from "../../../utils/data/charts/chart_series_generators/utils_call_duration_series";
-import { generateCallDurationOptions } from "../../../utils/data/charts/chart_options_generators/utils_call_duration_options";
-import { generateCallDurationTotals } from "../../../utils/data/charts/chart_totals_generators/utils_call_duration_totals";
-
+import {
+  generateCallDurationSeriesData,
+  generateCallDurationOptions,
+  generateCallDurationTotals,
+} from "./../../../utils/data/charts";
 const AverageTimeToEscalateChart: React.FC<DashboardChartInput> = ({
   initialDate,
   endDate,
@@ -63,15 +64,13 @@ const AverageTimeToEscalateChart: React.FC<DashboardChartInput> = ({
     });
 
     return (
-      <>
-        <DashboardChart
-          options={chartOptions}
-          totals={callOutcomesTotals}
-          openModal={() => {
-            renderModal(<DurationModal />);
-          }}
-        />
-      </>
+      <DashboardChart
+        options={chartOptions}
+        totals={callOutcomesTotals}
+        openModal={() => {
+          renderModal(<DurationModal />);
+        }}
+      />
     );
   }
 };

@@ -14,9 +14,11 @@ import { ChartOptions } from "../../../types/data_types";
 import { DashboardChart } from "../../chart_factory/chart_dashboard/comp_chart_dahboard";
 import { useTranslation } from "react-i18next";
 
-import { generateTransferredPercentageSeriesData } from "../../../utils/data/charts/chart_series_generators/utils_transferred_percentage_series_data";
-import { generateTransferredCallsOptions } from "../../../utils/data/charts/chart_options_generators/utils_transferred_percentage_options";
-import { generateTransferredPercentageTotals } from "../../../utils/data/charts/chart_totals_generators/utils_transferred_percentage_totals";
+import {
+  generateTransferredPercentageSeriesData,
+  generateTransferredCallsOptions,
+  generateTransferredPercentageTotals,
+} from "./../../../utils/data/charts";
 
 const EscalationRateChart: React.FC<DashboardChartInput> = ({
   initialDate,
@@ -71,15 +73,13 @@ const EscalationRateChart: React.FC<DashboardChartInput> = ({
     );
 
     return (
-      <>
-        <DashboardChart
-          options={chartOptions}
-          totals={callOutcomesTotals}
-          openModal={() => {
-            renderModal(<TransferredPercentageModal />);
-          }}
-        />
-      </>
+      <DashboardChart
+        options={chartOptions}
+        totals={callOutcomesTotals}
+        openModal={() => {
+          renderModal(<TransferredPercentageModal />);
+        }}
+      />
     );
   }
 };

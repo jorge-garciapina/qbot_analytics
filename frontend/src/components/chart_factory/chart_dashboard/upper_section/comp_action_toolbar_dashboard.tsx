@@ -1,5 +1,5 @@
 // CUSTOM COMPONENTS IMPORTS
-import { STYLED_ActionToolbarDashboardChart_Container } from "../../../../mui_configurations/styled_components/chart_sections/upper_section/styled_action_tool_bar_dashboard_chart";
+import { ActionToolbarDashboardChartContainer } from "../../../../mui_configurations/styled_components/chart_sections/upper_section/styled_action_tool_bar_dashboard_chart";
 import { DropDownMenuChart } from "../../../library/comp_drop_down_menu_chart";
 import { IconButtonChart } from "./comp_icon_button";
 
@@ -18,7 +18,7 @@ export const ActionToolbar: React.FC<ActionToolbarInput> = ({ openModal }) => {
     console.log("Appointment Details clicked");
   }
   return (
-    <STYLED_ActionToolbarDashboardChart_Container>
+    <ActionToolbarDashboardChartContainer>
       <DropDownMenuChart />
       <IconButtonChart
         icon={<OpenInNew />}
@@ -31,6 +31,6 @@ export const ActionToolbar: React.FC<ActionToolbarInput> = ({ openModal }) => {
         tooltipTitle={t("chartInformation.buttons.details")}
         onClick={appointmentDetails}
       />
-    </STYLED_ActionToolbarDashboardChart_Container>
+    </ActionToolbarDashboardChartContainer>
   );
 };

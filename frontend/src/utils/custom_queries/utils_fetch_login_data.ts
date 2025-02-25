@@ -1,4 +1,4 @@
-import { CallRecordsMigration } from "../../types/data_types";
+import { CallRecords } from "../../types/data_types";
 
 /**
  *
@@ -9,7 +9,7 @@ export async function fetchLoginData({
   queryKey,
 }: {
   queryKey: [string, string, string];
-}): Promise<CallRecordsMigration> {
+}): Promise<CallRecords> {
   const [query, initialDate, endDate] = queryKey;
 
   if (query != "login") {
@@ -17,7 +17,7 @@ export async function fetchLoginData({
   }
 
   const dbResponse = await fetch(
-    `/calls/login?initial_date=${initialDate}&final_date=${endDate}`
+    `server_connect/calls/login?initial_date=${initialDate}&final_date=${endDate}`
   );
 
   if (!dbResponse.ok) {

@@ -1,6 +1,6 @@
 import { Container, styled } from "@mui/material";
 
-export const STYLED_App_Container = styled(Container)(() => ({
+export const AppContainer = styled(Container)(() => ({
   display: "flex",
   flexDirection: "column",
 }));

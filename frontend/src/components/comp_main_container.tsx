@@ -1,13 +1,14 @@
 // CHARTS IMPORTS:
-import CallOutcomesStackedChart from "./charts/outcomes/comp_call_outcomes_chart";
+import HandlingOverviewChart from "./charts/handling_overview/comp_handling_overview_chart";
 import EscalationRateChart from "./charts/transferred_percentage/comp_transferred_percentage_chart";
 import AverageTimeToEscalateChart from "./charts/average_duration/comp_call_duration_chart";
 import CallCountByHourChart from "./charts/calls_by_hour/comp_call_count_by_hour_chart";
 
 // COMPONENT IMPORTS
-import { STYLED_App_Container } from "../mui_configurations/styled_components/styled_app_container";
+
+import { AppContainer } from "../mui_configurations/styled_components/styled_app_container";
 import { ChartModalContainer } from "./modals/comp_modal_container";
-import { DateRangeSelector } from "./date_range_selector/comp_range_selector";
+import { DateRangeSelector } from "./date_related_components/date_range_selector/comp_range_selector";
 
 // UTILS
 import { generateInitialDateInterval } from "../utils/dates/utils_dates";
@@ -61,7 +62,7 @@ const MainContainer = () => {
   //----------------END: Modal Section----------------
 
   return (
-    <STYLED_App_Container>
+    <AppContainer>
       <Button variant="contained" onClick={handleRefresh}>
         Refresh
       </Button>
@@ -78,7 +79,7 @@ const MainContainer = () => {
         initialDate={initialDayLogic.date}
         endDate={endDayLogic.date}
       />
-      <CallOutcomesStackedChart
+      <HandlingOverviewChart
         initialDate={initialDayLogic.date}
         endDate={endDayLogic.date}
         refreshTrigger={refreshTrigger}
@@ -103,7 +104,7 @@ const MainContainer = () => {
         renderModal={renderModal}
       />
       {isModalOpen && modalContent}
-    </STYLED_App_Container>
+    </AppContainer>
   );
 };
 

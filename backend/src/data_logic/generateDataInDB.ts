@@ -161,7 +161,7 @@ export async function generateCallRecords(
     const phoneNumber = generatePhoneNumber();
 
     // Create RawCallRecord
-    const callRecord: RawCallRecord = {
+    const rawCallRecord: RawCallRecord = {
       callId,
       phoneNumber,
       startTime,
@@ -171,7 +171,7 @@ export async function generateCallRecords(
       failure_reason,
     };
 
-    records.push(callRecord);
+    records.push(rawCallRecord);
     sequenceNumber++;
   }
 

@@ -6,10 +6,10 @@
     "appointmentTrends": "Trends"
   },
   "chartInformation": {
-    "callOutcomesChart": {
+    "callHandlingChart": {
       "handledByAI": "Calls handled by AI",
       "handledByHuman": "Calls redirected to human",
-      "chartTitle": "Daily Call Handling Overview with AI Handled Percentage",
+      "chartTitle": "Call Handling",
       "xAxisName": "Date",
       "yAxisName": "Number of calls/Percentage",
       "totals": {

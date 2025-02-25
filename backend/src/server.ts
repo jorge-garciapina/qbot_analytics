@@ -1,13 +1,12 @@
 import express, { Application } from "express";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
-import callsRoutes from "./routes/callsRoutes"; // Import the routes
 import dotenv from "dotenv";
+import routes from "./routes"; // Import the centralized routes
 
 dotenv.config();
 
 const mongoURL = process.env.MONGO_URL;
-
 
 // Initialize Express
 const app: Application = express();
@@ -18,7 +17,6 @@ app.use(bodyParser.json()); // Only body-parser is needed
 
 // MongoDB Connection
 const mongoURI = mongoURL || "";
-// const mongoURI = "mongodb://localhost:27017/data_analytics";
 mongoose.connect(mongoURI, {} as mongoose.ConnectOptions);
 
 // MongoDB Connection Success/Error Handlers
@@ -29,7 +27,7 @@ db.once("open", () => {
 });
 
 // Use Routes
-app.use("/calls", callsRoutes); // Mount the routes on the '/calls' path
+app.use("/server_connect", routes);
 
 // Start the server
 app.listen(PORT, (): void => {

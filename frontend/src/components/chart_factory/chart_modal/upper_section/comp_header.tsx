@@ -1,15 +1,15 @@
 import { Typography } from "@mui/material";
-import { useTranslation } from "react-i18next";
-export const ModalHeader: React.FC = () => {
-  const { t } = useTranslation();
 
+interface Input {
+  title: string;
+}
+
+export const ModalHeader: React.FC<Input> = ({ title }) => {
   return (
     <>
-      <Typography variant="modalChartTitle">
-        {t("modals.appointmentTrendsTitle")}
-      </Typography>
-      <Typography variant="modalChartText"> {t("modals.headerText")}
-      </Typography>
+      <Typography variant="modalChartTitle">{title}</Typography>
     </>
   );
 };
+
+//////////////////////////////////////////////////////////////

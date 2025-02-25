@@ -1,6 +1,6 @@
 import { Container, styled } from "@mui/material";
 
-export const STYLED_DashboardChartUpperSection_Container = styled(Container)(
+export const DashboardChartUpperSectionContainer = styled(Container)(
   ({ theme }) => ({
     display: "flex", // Use flexbox for layout
     alignItems: "center", // Align items vertically in the center
