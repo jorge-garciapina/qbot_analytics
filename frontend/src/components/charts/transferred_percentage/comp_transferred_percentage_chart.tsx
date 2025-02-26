@@ -59,7 +59,7 @@ const EscalationRateChart: React.FC<DashboardChartInput> = ({
     });
 
     // GENERATE footerSummaryInTimeInterval
-    const callOutcomesTotals: FooterSummaryTotalsType =
+    const handlingOverviewTotals: FooterSummaryTotalsType =
       generateTransferredPercentageTotals({
         fetchedData: fetchedData,
         totalName: t(
@@ -76,7 +76,7 @@ const EscalationRateChart: React.FC<DashboardChartInput> = ({
     return (
       <DashboardChart
         options={chartOptions}
-        footerSummaryInTimeInterval={callOutcomesTotals}
+        footerSummaryInTimeInterval={handlingOverviewTotals}
         openModal={() => {
           renderModal(<TransferredPercentageModal />);
         }}

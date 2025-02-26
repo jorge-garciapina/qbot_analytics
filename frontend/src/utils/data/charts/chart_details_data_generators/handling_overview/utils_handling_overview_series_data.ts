@@ -1,18 +1,18 @@
-import { SeriesItem } from "../../../../types/data_types";
+import { SeriesItem } from "../../../../../types/data_types";
 
-import { FetchedDataType } from "../../../../types/data_fetching_types";
+import { FetchedDataType } from "../../../../../types/data_fetching_types";
 
-interface OutcomesData {
+interface HandlingOverviewData {
   fetchedData: FetchedDataType;
   callsHandledByAIName: string;
   callsHandledByHumanName: string;
 }
 
-export function generateCallOutcomesSeriesData({
+export function generateHandlingOverviewSeriesData({
   fetchedData,
   callsHandledByAIName,
   callsHandledByHumanName,
-}: OutcomesData): SeriesItem[] {
+}: HandlingOverviewData): SeriesItem[] {
   const callsHandledByAI: number[] =
     fetchedData.handlingOverviewDaily.callsHandledByAI;
   const callsHandledByHuman: number[] =

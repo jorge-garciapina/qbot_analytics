@@ -15,7 +15,7 @@ interface TrendsOptionsInput {
   yAxisName: string;
 }
 
-export function generateTrendsOptions({
+export function generateHandlingOverviewModalOptions({
   title,
   xAxisName,
   yAxisData,

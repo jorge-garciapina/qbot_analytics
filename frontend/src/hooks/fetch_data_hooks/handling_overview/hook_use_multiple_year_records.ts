@@ -2,8 +2,8 @@ import { useQuery } from "@tanstack/react-query";
 
 import { fetchMultipleYearData } from "../../../utils/custom_queries/handling_overview/utils_fetch_multiple_year_data";
 
-type UseMultipleYearCallRecordsInput = {
-  queryKey: "get_multiple_year_data";
+type UseMultipleYearDataInput = {
+  queryKey: "multiple_year_data";
   initialYear: number;
   endYear: number;
 };
@@ -11,7 +11,7 @@ export function useHandlingOverviewMultipleYearRecords({
   queryKey,
   initialYear,
   endYear,
-}: UseMultipleYearCallRecordsInput) {
+}: UseMultipleYearDataInput) {
   const iYear = initialYear || 0;
   const eYear = endYear || 0;
 

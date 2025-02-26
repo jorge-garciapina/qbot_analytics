@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 
-import { HandlingOverviewModal } from "./comp_handling_overview_modal";
+import { HandlingOverviewDetailsModal } from "./comp_handling_overview_modal";
 import { DashboardChart } from "../../chart_factory/chart_dashboard/comp_chart_dahboard";
 
 import { useLoginData } from "../../../hooks/fetch_data_hooks/hook_use_login_data";
@@ -15,7 +15,7 @@ import {
 import { useTranslation } from "react-i18next";
 
 import {
-  generateCallOutcomesSeriesData,
+  generateHandlingOverviewSeriesData,
   generateHandlingOverviewOptions,
   generateHandlingOverviewTotals,
 } from "../../../utils/data/charts";
@@ -45,17 +45,19 @@ const HandlingOverviewChart: React.FC<DashboardChartInput> = ({
   // ------------------------GENERATE CHART CONFIGURATION-----------------------
   if (fetchedData) {
     // GENERATE SERIES DATA:
-    const seriesData: SeriesItem[] = generateCallOutcomesSeriesData({
+    const seriesData: SeriesItem[] = generateHandlingOverviewSeriesData({
       fetchedData: fetchedData,
-      callsHandledByAIName: t("chartInformation.callHandlingChart.handledByAI"),
+      callsHandledByAIName: t(
+        "chartInformation.handlingOverviewChart.handledByAI"
+      ),
       callsHandledByHumanName: t(
-        "chartInformation.callHandlingChart.handledByHuman"
+        "chartInformation.handlingOverviewChart.handledByHuman"
       ),
     });
 
-    const title = t("chartInformation.callHandlingChart.chartTitle");
-    const xAxisName = t("chartInformation.callHandlingChart.xAxisName");
-    const yAxisName = t("chartInformation.callHandlingChart.yAxisName");
+    const title = t("chartInformation.handlingOverviewChart.chartTitle");
+    const xAxisName = t("chartInformation.handlingOverviewChart.xAxisName");
+    const yAxisName = t("chartInformation.handlingOverviewChart.yAxisName");
     // GENERATE OPTIONS:
     const chartOptions: ChartOptions = generateHandlingOverviewOptions({
       fetchedData: fetchedData,
@@ -70,13 +72,13 @@ const HandlingOverviewChart: React.FC<DashboardChartInput> = ({
       generateHandlingOverviewTotals({
         fetchedData: fetchedData,
         totalName: t(
-          "chartInformation.callHandlingChart.footerSummaryInTimeInterval.total"
+          "chartInformation.handlingOverviewChart.footerSummaryInTimeInterval.total"
         ),
         handledByAIName: t(
-          "chartInformation.callHandlingChart.footerSummaryInTimeInterval.handledByAI"
+          "chartInformation.handlingOverviewChart.footerSummaryInTimeInterval.handledByAI"
         ),
         handledByHumanName: t(
-          "chartInformation.callHandlingChart.footerSummaryInTimeInterval.handledByHuman"
+          "chartInformation.handlingOverviewChart.footerSummaryInTimeInterval.handledByHuman"
         ),
       });
 
@@ -86,7 +88,7 @@ const HandlingOverviewChart: React.FC<DashboardChartInput> = ({
         footerSummaryInTimeInterval={handlingOverviewTotals}
         openModal={() => {
           renderModal(
-            <HandlingOverviewModal
+            <HandlingOverviewDetailsModal
               title={title}
               xAxisName={xAxisName}
               yAxisName={yAxisName}

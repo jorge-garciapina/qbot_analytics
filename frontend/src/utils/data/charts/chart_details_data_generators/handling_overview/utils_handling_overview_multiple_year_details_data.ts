@@ -1,11 +1,11 @@
-import {
-  HandlingOverviewYearRecordType,
-  SeriesItem,
-} from "../../../../types/data_types";
+import { SeriesItem } from "../../../../../types/data_types";
 
-export function generateHandlingOverviewDetailsData(
-  dataToProcess: HandlingOverviewYearRecordType[]
+import { HandlingOverviewMonthlyDataType } from "../../../../../types";
+
+export function generateHandlingOverviewMultipleYearDetailsData(
+  dataToProcess: HandlingOverviewMonthlyDataType[]
 ): SeriesItem[] {
+  console.log("DATA TO PROCESS: ", dataToProcess);
   const seriesData: SeriesItem[] = dataToProcess.flatMap((current) => {
     return [
       {

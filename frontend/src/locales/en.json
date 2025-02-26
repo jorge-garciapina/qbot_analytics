@@ -6,7 +6,7 @@
     "appointmentTrends": "Trends"
   },
   "chartInformation": {
-    "callHandlingChart": {
+    "handlingOverviewChart": {
       "handledByAI": "Calls handled by AI",
       "handledByHuman": "Calls redirected to human",
       "chartTitle": "Call Handling",
@@ -18,7 +18,7 @@
         "handledByHuman": "Handled by Human"
       }
     },
-    "callOutcomesPie": {
+    "handlingOverviewPie": {
       "handledByAI": "Calls Handled by AI",
       "handledByHuman": "Calls redirected to human",
       "chartTitle": "Handling Overview (Total)"

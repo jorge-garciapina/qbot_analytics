@@ -1,19 +1,21 @@
 import { HandlingOverviewMonthlyDataType } from "../../../types";
-export async function fetchMultipleYearData({
+export async function fetchHandlingOverviewMonthlyData({
   queryKey,
 }: {
-  queryKey: [string, number, number];
-}): Promise<HandlingOverviewMonthlyDataType[]> {
-  const [query, initialYear, endYear] = queryKey;
-  const desiredEndpoint = "multiple_year_data";
+  queryKey: [string, string, string];
+}): Promise<HandlingOverviewMonthlyDataType> {
+  const test = 0;
+  const [query, initialDate, endDate] = queryKey;
 
-  if (query != desiredEndpoint) {
+  const desiredEndpoint = "monthly_data_in_date_range";
+
+  if (query != "monthly_data_in_date_range") {
     throw new Error(`Failed to fetch data from DB`);
   }
-  const baseURL = "server_connect/handling_overview";
 
+  const baseURL = "server_connect/handling_overview";
   const dbResponse = await fetch(
-    `${baseURL}/${desiredEndpoint}?initial_year=${initialYear}&end_year=${endYear}`
+    `${baseURL}/${desiredEndpoint}?start_date=${initialDate}&end_date=${endDate}`
   );
 
   if (!dbResponse.ok) {

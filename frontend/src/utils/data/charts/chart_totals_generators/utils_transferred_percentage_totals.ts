@@ -1,7 +1,7 @@
 import { FooterSummaryTotalsType } from "../../../../types/data_types";
 import { FetchedDataType } from "../../../../types/data_fetching_types";
 
-interface CallOutcomesInput {
+interface HandlingOverviewFooterTotalsInput {
   fetchedData: FetchedDataType | undefined;
   totalName: string;
   handledByAIName: string;
@@ -12,7 +12,7 @@ export function generateTransferredPercentageTotals({
   totalName,
   handledByAIName,
   handledByHumanName,
-}: CallOutcomesInput): FooterSummaryTotalsType {
+}: HandlingOverviewFooterTotalsInput): FooterSummaryTotalsType {
   const totalCalls = fetchedData?.handlingOverviewTotal.total || 0;
 
   const callsHandledByAIPercentage =
@@ -21,7 +21,7 @@ export function generateTransferredPercentageTotals({
   const callsHandledByHumanPercentage =
     fetchedData?.handlingOverviewTotal.handledByHumanPercentage || 0;
 
-  const callOutcomesTotals: FooterSummaryTotalsType = [
+  const handlingOverviewTotals: FooterSummaryTotalsType = [
     {
       name: totalName,
       value: totalCalls,
@@ -35,5 +35,5 @@ export function generateTransferredPercentageTotals({
       value: callsHandledByHumanPercentage,
     },
   ];
-  return callOutcomesTotals;
+  return handlingOverviewTotals;
 }

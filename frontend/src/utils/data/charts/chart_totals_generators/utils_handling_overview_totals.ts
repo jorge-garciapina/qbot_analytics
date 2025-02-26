@@ -1,7 +1,7 @@
 import { FooterSummaryTotalsType } from "../../../../types/data_types";
 import { FetchedDataType } from "../../../../types/data_fetching_types";
 
-interface CallOutcomesInput {
+interface HandlingOverviewTotalsInput {
   fetchedData: FetchedDataType | undefined;
   totalName: string;
   handledByAIName: string;
@@ -12,10 +12,10 @@ export function generateHandlingOverviewTotals({
   totalName,
   handledByAIName,
   handledByHumanName,
-}: CallOutcomesInput): FooterSummaryTotalsType {
+}: HandlingOverviewTotalsInput): FooterSummaryTotalsType {
   const footerSummaryInTimeInterval = fetchedData?.handlingOverviewTotal;
 
-  const callOutcomesTotals: FooterSummaryTotalsType = [
+  const handlingOverviewTotals: FooterSummaryTotalsType = [
     {
       name: totalName,
       value: footerSummaryInTimeInterval?.total || 0,
@@ -29,5 +29,5 @@ export function generateHandlingOverviewTotals({
       value: footerSummaryInTimeInterval?.handledByHuman || 0,
     },
   ];
-  return callOutcomesTotals;
+  return handlingOverviewTotals;
 }

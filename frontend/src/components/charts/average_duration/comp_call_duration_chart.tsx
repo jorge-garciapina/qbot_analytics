@@ -54,7 +54,7 @@ const AverageTimeToEscalateChart: React.FC<DashboardChartInput> = ({
       yAxisName: t("chartInformation.callDuration.yAxisName"),
     });
     // GENERATE footerSummaryInTimeInterval:
-    const callOutcomesTotals = generateCallDurationTotals({
+    const handlingOverviewTotals = generateCallDurationTotals({
       fetchedData: fetchedData,
       totalName: t(
         "chartInformation.callDuration.footerSummaryInTimeInterval.total"
@@ -70,7 +70,7 @@ const AverageTimeToEscalateChart: React.FC<DashboardChartInput> = ({
     return (
       <DashboardChart
         options={chartOptions}
-        footerSummaryInTimeInterval={callOutcomesTotals}
+        footerSummaryInTimeInterval={handlingOverviewTotals}
         openModal={() => {
           renderModal(<DurationModal />);
         }}

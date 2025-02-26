@@ -1,7 +1,7 @@
 import { FooterSummaryTotalsType } from "../../../../types/data_types";
 import { FetchedDataType } from "../../../../types/data_fetching_types";
 
-interface CallOutcomesInput {
+interface HandlingOverviewCountByHourInput {
   fetchedData: FetchedDataType | undefined;
   peakHourName: string;
   peakVolumeName: string;
@@ -10,11 +10,11 @@ export function generateCallCountByHourTotals({
   fetchedData,
   peakHourName,
   peakVolumeName,
-}: CallOutcomesInput): FooterSummaryTotalsType {
+}: HandlingOverviewCountByHourInput): FooterSummaryTotalsType {
   const peakHour = fetchedData?.peakTimes.peakHour || 0;
   const peakVolume = fetchedData?.peakTimes.peakVolume || 0;
 
-  const callOutcomesTotals: FooterSummaryTotalsType = [
+  const handlingOverviewTotals: FooterSummaryTotalsType = [
     {
       name: peakHourName,
       value: peakHour,
@@ -24,5 +24,5 @@ export function generateCallCountByHourTotals({
       value: peakVolume,
     },
   ];
-  return callOutcomesTotals;
+  return handlingOverviewTotals;
 }

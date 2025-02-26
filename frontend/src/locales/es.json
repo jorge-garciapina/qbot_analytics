@@ -6,7 +6,7 @@
     "appointmentTrends": "Tendencias"
   },
   "chartInformation": {
-    "callHandlingChart": {
+    "handlingOverviewChart": {
       "handledByAI": "Llamadas gestionadas por IA",
       "handledByHuman": "Llamadas redirigidas a un humano",
       "chartTitle": "Atención de llamadas",
@@ -18,7 +18,7 @@
         "handledByHuman": "Gestionadas por humanos"
       }
     },
-    "callOutcomesPie": {
+    "handlingOverviewPie": {
       "handledByAI": "Llamadas gestionadas por IA",
       "handledByHuman": "Llamadas redirigidas a un humano",
       "chartTitle": "Resumen de gestión (Total)"

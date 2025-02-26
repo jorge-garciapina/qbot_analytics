@@ -1,12 +1,5 @@
 import { ReactNode } from "react";
 
-export interface HandlingOverviewYearRecordType {
-  months: string[];
-  year: number;
-  scheduledCallsByMonth: number[];
-  transferredCallsByMonth: number[];
-}
-
 export interface DashboardChartInput {
   initialDate: string;
   endDate: string;
@@ -110,13 +103,6 @@ export interface ModalChartInput {
   endDate: string;
 }
 
-export interface ModalChartOptions {
-  options: ChartOptions;
-  initialDateModifier: (date: string) => void;
-  endDateModifier: (date: string) => void;
-  initialDate: string;
-  endDate: string;
-}
 export interface DashboardChartProps {
   options: ChartOptions;
   footerSummaryInTimeInterval?: FooterSummaryTotalsType;

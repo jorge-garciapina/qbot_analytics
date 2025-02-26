@@ -2,10 +2,13 @@ import { ModalChartUpperSectionContainer } from "../../../../mui_configurations/
 import { ActionToolbar } from "./comp_action_toolbar_modal";
 import { ModalHeader } from "./comp_header";
 
+import { ValidGranularities } from "../../../../hooks";
+
 interface UpperSectionInput {
   title: string;
   initialDateModifier: (date: string) => void;
   endDateModifier: (date: string) => void;
+  granularityModifier: (newGranularity: ValidGranularities) => void;
   initialDate: string;
   endDate: string;
 }
@@ -14,6 +17,7 @@ export const UpperSectionModal: React.FC<UpperSectionInput> = ({
   title,
   initialDateModifier,
   endDateModifier,
+  granularityModifier,
   initialDate,
   endDate,
 }) => {
@@ -23,6 +27,7 @@ export const UpperSectionModal: React.FC<UpperSectionInput> = ({
       <ActionToolbar
         initialDateModifier={initialDateModifier}
         endDateModifier={endDateModifier}
+        granularityModifier={granularityModifier}
         initialDate={initialDate}
         endDate={endDate}
       />

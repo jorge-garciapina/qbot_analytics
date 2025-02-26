@@ -10,7 +10,7 @@ import {
   generateXAxis,
 } from "../../../utils_charts_options_object";
 
-interface CallsOutcomesInput {
+interface HandlingOverviewOptionsInput {
   fetchedData: FetchedDataType;
   title: string;
   xAxisName: string;
@@ -23,7 +23,7 @@ export function generateHandlingOverviewOptions({
   xAxisName,
   seriesData,
   yAxisName,
-}: CallsOutcomesInput): ChartOptions {
+}: HandlingOverviewOptionsInput): ChartOptions {
   const chartKeys: string[] = fetchedData.handlingOverviewDaily.chartKeys;
   const chartOptions: ChartOptions = {
     title: generateChartTitle(title),

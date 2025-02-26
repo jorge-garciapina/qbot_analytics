@@ -2,9 +2,11 @@ import { ActionToolbarDashboardChartContainer } from "../../../../mui_configurat
 // import { DropDownMenuChart } from "../../../library/comp_drop_down_menu_chart";
 import { DateRangeButtonChart } from "../../../library/buttons/comp_date_range_button_chart";
 import { DateRangeSelector } from "../../../date_related_components/date_range_selector/comp_range_selector";
+import { ValidGranularities } from "../../../../hooks";
 interface ActionToolbarInput {
   initialDateModifier: (date: string) => void;
   endDateModifier: (date: string) => void;
+  granularityModifier: (newGranularity: ValidGranularities) => void;
   initialDate: string;
   endDate: string;
 }
@@ -12,15 +14,28 @@ interface ActionToolbarInput {
 export const ActionToolbar: React.FC<ActionToolbarInput> = ({
   initialDateModifier,
   endDateModifier,
+  granularityModifier,
   initialDate,
   endDate,
 }) => {
   return (
     <ActionToolbarDashboardChartContainer>
       {/* <DropDownMenuChart /> */}
-      <DateRangeButtonChart buttonText={"This Week"} />
-      <DateRangeButtonChart buttonText={"This Month"} />
-      <DateRangeButtonChart buttonText={"This Year"} />
+      <DateRangeButtonChart
+        granularityModifier={granularityModifier}
+        granularity={"weekly"}
+        buttonText={"This Week"}
+      />
+      <DateRangeButtonChart
+        granularityModifier={granularityModifier}
+        granularity={"monthly"}
+        buttonText={"This Month"}
+      />
+      <DateRangeButtonChart
+        granularityModifier={granularityModifier}
+        granularity={"yearly"}
+        buttonText={"This Year"}
+      />
       <DateRangeSelector
         initialDateModifier={(date) => {
           initialDateModifier(date);
