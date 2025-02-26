@@ -1,10 +1,10 @@
-import { YearCallRecord } from "../../../types/data_types";
+import { HandlingOverviewYearRecordType } from "../../../types/data_types";
 
 export async function fetchMultipleYearData({
   queryKey,
 }: {
   queryKey: [string, number, number];
-}): Promise<YearCallRecord[]> {
+}): Promise<HandlingOverviewYearRecordType[]> {
   const [query, initialYear, endYear] = queryKey;
 
   if (query != "get_multiple_year_data") {

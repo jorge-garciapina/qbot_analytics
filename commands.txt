@@ -1,28 +1,152 @@
----------------------------------------------------------------
-I WANT YOU TO IMPROVE THIS PROMPT: 
-HERE IS THE CONTEXT FOR THE PROMPT YOU HAVE TO IMPROVE: 
-1) IT WILL BE USED IN THE SAME CHAT THAT WAS USED TO CREATE THE TABLES AND CHARTS DISPLAYED ON THE IMAGE 1, 
-   SO THE INFORMATION IS IN THE CONTEXT OF THAT CONVERSATION.  
-2) IMAGE 1 DISPLAYS THE DAILY DATA, BUT AS THE CHAT CAN VERIFY, WE ALSO HAVE THE MONTHLY AND WEEKLY TABLES AND CHARTS. 
-3) ON IMAGE 2 WE DISPLAY THE MONTHLY CHART AND THE DATA FILTER MENU THAT WILL ALLOW USERS TO SELECT THE DESIRED CONFIGURATION 
-   TO DISPLAY THE DATA: BY SELECTING DAILY, THE CHART WILL BE REPLACED FOR THE DAILY CHART, AND THE SAME FOR THE WEEKLY. 
+I THINK YOUR PAST SOLUTION IS NOT WHAT WAS EXPECTED. LETS START AGAIN. 
+THIS FUNCTION IS SUPPOSED TO RETRIEVE THE TOTAL VOLUME ORDERED BY MONTH: 
+export async function getMonthlyDataInGivenYear(
+  inputYear: number
+): Promise<HandlingOverviewMonthlyData> {
+  const year: number = inputYear;
 
-THE TASK I WANT TO EXECUTE IS THIS: 
-USING THE PROVIDED CONTEXT, CREATE A PROMPT THAT WILL INDICATE THE CHATGPT OF THE OTHER CONVERSATION TO: 
+  // Dynamically define the schema name based on the input year
+  const schemaName: string = `calls_${year}`;
 
-THE TIME RANGE WILL DEPEND UPON THE GRANULARITY SELECTOR. FOR EXAMPLE, IF GRANULARITY IS DAILY, THEN IT SHOULD ALLOW 
-TO CHOSE DAYS IN CALENDAR, IF GRANULARITY IS MONTHLY IT WILL ALLOW TO USE THE MONTHS OF A PARTICULAR YEAR. 
+  // Create a dynamic Mongoose model for the corresponding yearly collection
+  const DynamicCallModel: Model<RawCallRecord> = mongoose.model<RawCallRecord>(
+    schemaName,
+    callSchema
+  );
 
-CREATE A PROMPT TO REQUEST FOR IDEAS FOR THE DATE RANGE DESIGN. 
-EXPLAIN THE CONTEXT WITH CARE. USE THE IMAGES FOR REFERENCE, I WILL ATTACH THE SAME IMAGES WHEN I SEND THE PORMPT YOU WILL CREATE
+  // Perform an aggregation query to compute call volumes by status and month
+  const monthlyData: AggregatedData[] = await DynamicCallModel.aggregate([
+    {
+      // Filter records to include only those within the specified year
+      $match: {
+        startTime: {
+          $gte: new Date(`${year}-01-01T00:00:00.000Z`), // Start of the year
+          $lte: new Date(`${year}-12-31T23:59:59.999Z`), // End of the year
+        },
+      },
+    },
+    {
+      // Group records by call status and extract the month from startTime
+      $group: {
+        _id: {
+          status: "$status",
+          month: { $month: "$startTime" }, // Extract month from timestamp
+        },
+        count: { $sum: 1 }, // Count occurrences
+      },
+    },
+    {
+      // Group by status to accumulate monthly call counts
+      $group: {
+        _id: "$_id.status", // Group by call status
+        monthlyCounts: {
+          $push: {
+            month: "$_id.month", // Store month
+            count: "$count", // Store count for that month
+          },
+        },
+      },
+    },
+    {
+      // Transform the result into an object with month names as keys
+      $project: {
+        _id: 0,
+        status: "$_id", // Rename _id field to status
+        countsByMonth: {
+          $arrayToObject: {
+            $map: {
+              input: "$monthlyCounts",
+              as: "entry",
+              in: {
+                k: {
+                  $let: {
+                    vars: {
+                      // Define month names array
+                      months: [
+                        "january",
+                        "february",
+                        "march",
+                        "april",
+                        "may",
+                        "june",
+                        "july",
+                        "august",
+                        "september",
+                        "october",
+                        "november",
+                        "december",
+                      ],
+                    },
+                    in: {
+                      // Convert numerical month index (1-12) to a string
+                      $arrayElemAt: [
+                        "$$months",
+                        { $subtract: ["$$entry.month", 1] }, // Adjust index to match array (0-based)
+                      ],
+                    },
+                  },
+                },
+                v: "$$entry.count", // Assign corresponding count
+              },
+            },
+          },
+        },
+      },
+    },
+  ]);
 
+  // List of month names
+  const months: string[] = [
+    "january",
+    "february",
+    "march",
+    "april",
+    "may",
+    "june",
+    "july",
+    "august",
+    "september",
+    "october",
+    "november",
+    "december",
+  ];
 
+  /**
+   * Finds the data element for a given call status
+   * @param callReason - The status of the call (e.g., "scheduled", "transferred")
+   * @returns The corresponding data object or undefined if not found
+   */
+  function findElement(callReason: string): AggregatedData | undefined {
+    return monthlyData.find((element) => element.status === callReason);
+  }
 
+  // Construct an array of scheduled call volumes for each month
+  const scheduledCallsByMonth: number[] = months.map(
+    (month) => findElement("scheduled")?.countsByMonth[month] || 0 // Default to 0 if undefined
+  );
 
+  // Construct an array of transferred call volumes for each month
+  const transferredCallsByMonth: number[] = months.map(
+    (month) => findElement("transferred")?.countsByMonth[month] || 0 // Default to 0 if undefined
+  );
 
+  // Return structured call volume data
+  const HandlingOverviewMonthlyData: HandlingOverviewMonthlyData = {
+    months,
+    scheduledCallsByMonth,
+    transferredCallsByMonth,
+    year,
+  };
 
+  return HandlingOverviewMonthlyData;
+}
 
-
-
+USING THAT FUNCTION AS INSPIRATION, I WANT YOU TO CREATE A NEW FUNCTION THAT WILL RETRIEVE THE DATA ORDERED BY MONTH 
+IN A GIVEN INTERVAL (START MONTH AND END MONTH). 
+CONSIDER THAT getMonthlyDataInGivenYear RETRIEVES THE DATA FOR THE WHOLE YEAR, MEANWHILE THE FUNCTION THAT I WANT 
+WILL PROVIDE THE DATA FOR ONLY THE MONTHS IN THE DESIRED INTERVAL. 
+GIVE ME THE NEW FUNCTION. 
+REMEMBER, THE  getMonthlyDataInGivenYear IS ONLY FOR INSPIRATION, DO NOT MAKE THE SAME THAT IS DONE THERE (UNLESS IT IS 
+NECESSARY)
 
 

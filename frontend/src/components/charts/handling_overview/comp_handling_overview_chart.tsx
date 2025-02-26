@@ -8,7 +8,7 @@ import { useLoginData } from "../../../hooks/fetch_data_hooks/hook_use_login_dat
 import {
   DashboardChartInput,
   ChartOptions,
-  ChartTotals,
+  FooterSummaryTotalsType,
   SeriesItem,
 } from "../../../types/data_types";
 
@@ -16,8 +16,8 @@ import { useTranslation } from "react-i18next";
 
 import {
   generateCallOutcomesSeriesData,
-  generateCallOutcomesOptions,
-  generateCallOutcomesTotals,
+  generateHandlingOverviewOptions,
+  generateHandlingOverviewTotals,
 } from "../../../utils/data/charts";
 // Main Component
 const HandlingOverviewChart: React.FC<DashboardChartInput> = ({
@@ -57,7 +57,7 @@ const HandlingOverviewChart: React.FC<DashboardChartInput> = ({
     const xAxisName = t("chartInformation.callHandlingChart.xAxisName");
     const yAxisName = t("chartInformation.callHandlingChart.yAxisName");
     // GENERATE OPTIONS:
-    const chartOptions: ChartOptions = generateCallOutcomesOptions({
+    const chartOptions: ChartOptions = generateHandlingOverviewOptions({
       fetchedData: fetchedData,
       title: title,
       xAxisName: xAxisName,
@@ -65,22 +65,25 @@ const HandlingOverviewChart: React.FC<DashboardChartInput> = ({
       yAxisName: yAxisName,
     });
 
-    // GENERATE TOTALS
-    const callOutcomesTotals: ChartTotals = generateCallOutcomesTotals({
-      fetchedData: fetchedData,
-      totalName: t("chartInformation.callHandlingChart.totals.total"),
-      handledByAIName: t(
-        "chartInformation.callHandlingChart.totals.handledByAI"
-      ),
-      handledByHumanName: t(
-        "chartInformation.callHandlingChart.totals.handledByHuman"
-      ),
-    });
+    // GENERATE footerSummaryInTimeInterval
+    const handlingOverviewTotals: FooterSummaryTotalsType =
+      generateHandlingOverviewTotals({
+        fetchedData: fetchedData,
+        totalName: t(
+          "chartInformation.callHandlingChart.footerSummaryInTimeInterval.total"
+        ),
+        handledByAIName: t(
+          "chartInformation.callHandlingChart.footerSummaryInTimeInterval.handledByAI"
+        ),
+        handledByHumanName: t(
+          "chartInformation.callHandlingChart.footerSummaryInTimeInterval.handledByHuman"
+        ),
+      });
 
     return (
       <DashboardChart
         options={chartOptions}
-        totals={callOutcomesTotals}
+        footerSummaryInTimeInterval={handlingOverviewTotals}
         openModal={() => {
           renderModal(
             <HandlingOverviewModal

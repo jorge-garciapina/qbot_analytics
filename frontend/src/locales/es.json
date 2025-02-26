@@ -12,7 +12,7 @@
       "chartTitle": "Atención de llamadas",
       "xAxisName": "Fecha",
       "yAxisName": "Número de llamadas/Porcentaje",
-      "totals": {
+      "footerSummaryInTimeInterval": {
         "total": "Total de llamadas",
         "handledByAI": "Gestionadas por IA",
         "handledByHuman": "Gestionadas por humanos"
@@ -28,7 +28,7 @@
       "xAxisName": "Fecha",
       "yAxisName": "Tasa de escalación [%]",
       "seriesName": "Llamadas gestionadas por IA",
-      "totals": {
+      "footerSummaryInTimeInterval": {
         "total": "Total de llamadas",
         "handledByAI": "Porcentaje de llamadas gestionadas por IA",
         "handledByHuman": "Porcentaje de llamadas gestionadas por Humanos"
@@ -40,7 +40,7 @@
       "yAxisName": "Tiempo medio para escalar (Segundos)",
       "handledByAI": "Llamadas gestionadas por IA (s)",
       "handledByHuman": "Llamadas gestionadas por humanos (s)",
-      "totals": {
+      "footerSummaryInTimeInterval": {
         "total": "Total de llamadas",
         "handledByAI": "Duración promedio de llamadas gestionadas por IA",
         "handledByHuman": "Duración promedio de llamadas gestionadas por IA"
@@ -52,7 +52,7 @@
       "yAxisName": "Número de llamadas",
       "handledByAI": "Llamadas gestionadas por IA",
       "handledByHuman": "Llamadas gestionadas por humanos",
-      "totals": {
+      "footerSummaryInTimeInterval": {
         "peakHour": "Hora con más llamadas",
         "peakVolume": "Máximo número de llamadas"
       }
@@ -63,7 +63,7 @@
       "yAxisName": "Número de llamadas",
       "handledByAI": "Calls Handled By AI",
       "handledByHuman": "Calls Handled By Human",
-      "totals": {
+      "footerSummaryInTimeInterval": {
         "peakHour": "Peak Hour",
         "peakVolume": "Peak Volume"
       }

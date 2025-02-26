@@ -12,7 +12,7 @@
       "chartTitle": "Call Handling",
       "xAxisName": "Date",
       "yAxisName": "Number of calls/Percentage",
-      "totals": {
+      "footerSummaryInTimeInterval": {
         "total": "Total Calls",
         "handledByAI": "Handled by AI",
         "handledByHuman": "Handled by Human"
@@ -28,7 +28,7 @@
       "xAxisName": "Date",
       "yAxisName": "Escalation Rate [%]",
       "seriesName": "Calls handled by AI",
-      "totals": {
+      "footerSummaryInTimeInterval": {
         "total": "Total Calls",
         "handledByAI": "Percentage of calls handled by AI",
         "handledByHuman": "Percentage of calls handled by Human"
@@ -40,7 +40,7 @@
       "yAxisName": "Average Time To Escalate (Seconds)",
       "handledByAI": "Calls Handled By AI (s)",
       "handledByHuman": "Calls Handled By Human (s)",
-      "totals": {
+      "footerSummaryInTimeInterval": {
         "total": "Total Calls",
         "handledByAI": "Average duration calls handled by AI",
         "handledByHuman": "Average duration calls handled by Human"
@@ -52,7 +52,7 @@
       "yAxisName": "Number of Calls",
       "handledByAI": "Calls Handled By AI",
       "handledByHuman": "Calls Handled By Human",
-      "totals": {
+      "footerSummaryInTimeInterval": {
         "peakHour": "Peak Hour",
         "peakVolume": "Peak Volume"
       }
@@ -63,7 +63,7 @@
       "yAxisName": "Number of Calls",
       "handledByAI": "Calls Handled By AI",
       "handledByHuman": "Calls Handled By Human",
-      "totals": {
+      "footerSummaryInTimeInterval": {
         "peakHour": "Peak Hour",
         "peakVolume": "Peak Volume"
       }

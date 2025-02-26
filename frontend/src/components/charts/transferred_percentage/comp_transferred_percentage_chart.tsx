@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import { TransferredPercentageModal } from "./comp_transferred_percentage_modal";
 
 import {
-  ChartTotals,
+  FooterSummaryTotalsType,
   DashboardChartInput,
   SeriesItem,
 } from "../../../types/data_types";
@@ -58,24 +58,25 @@ const EscalationRateChart: React.FC<DashboardChartInput> = ({
       yAxisName: t("chartInformation.transferredPercentage.yAxisName"),
     });
 
-    // GENERATE TOTALS
-    const callOutcomesTotals: ChartTotals = generateTransferredPercentageTotals(
-      {
+    // GENERATE footerSummaryInTimeInterval
+    const callOutcomesTotals: FooterSummaryTotalsType =
+      generateTransferredPercentageTotals({
         fetchedData: fetchedData,
-        totalName: t("chartInformation.transferredPercentage.totals.total"),
+        totalName: t(
+          "chartInformation.transferredPercentage.footerSummaryInTimeInterval.total"
+        ),
         handledByAIName: t(
-          "chartInformation.transferredPercentage.totals.handledByAI"
+          "chartInformation.transferredPercentage.footerSummaryInTimeInterval.handledByAI"
         ),
         handledByHumanName: t(
-          "chartInformation.transferredPercentage.totals.handledByHuman"
+          "chartInformation.transferredPercentage.footerSummaryInTimeInterval.handledByHuman"
         ),
-      }
-    );
+      });
 
     return (
       <DashboardChart
         options={chartOptions}
-        totals={callOutcomesTotals}
+        footerSummaryInTimeInterval={callOutcomesTotals}
         openModal={() => {
           renderModal(<TransferredPercentageModal />);
         }}

@@ -1,7 +1,10 @@
-import { YearCallRecord, SeriesItem } from "../../../../types/data_types";
+import {
+  HandlingOverviewYearRecordType,
+  SeriesItem,
+} from "../../../../types/data_types";
 
-export function generateTrendSeriesData(
-  dataToProcess: YearCallRecord[]
+export function generateHandlingOverviewDetailsData(
+  dataToProcess: HandlingOverviewYearRecordType[]
 ): SeriesItem[] {
   const seriesData: SeriesItem[] = dataToProcess.flatMap((current) => {
     return [

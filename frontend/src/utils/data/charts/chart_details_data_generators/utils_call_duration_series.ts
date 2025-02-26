@@ -1,7 +1,9 @@
-import { SeriesItem, CallRecordsMigration } from "../../../../types/data_types";
+import { SeriesItem } from "../../../../types/data_types";
+
+import { FetchedDataType } from "../../../../types/data_fetching_types";
 
 interface CallDurationData {
-  fetchedData: CallRecordsMigration;
+  fetchedData: FetchedDataType;
   callsHandledByAIName: string;
   callsHandledByHumanName: string;
 }

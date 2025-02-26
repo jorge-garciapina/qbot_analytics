@@ -7,32 +7,26 @@ interface CallOutcomesInput {
   handledByAIName: string;
   handledByHumanName: string;
 }
-export function generateTransferredPercentageTotals({
+export function generateHandlingOverviewTotals({
   fetchedData,
   totalName,
   handledByAIName,
   handledByHumanName,
 }: CallOutcomesInput): FooterSummaryTotalsType {
-  const totalCalls = fetchedData?.handlingOverviewTotal.total || 0;
-
-  const callsHandledByAIPercentage =
-    fetchedData?.handlingOverviewTotal.handledByAIPercentage || 0;
-
-  const callsHandledByHumanPercentage =
-    fetchedData?.handlingOverviewTotal.handledByHumanPercentage || 0;
+  const footerSummaryInTimeInterval = fetchedData?.handlingOverviewTotal;
 
   const callOutcomesTotals: FooterSummaryTotalsType = [
     {
       name: totalName,
-      value: totalCalls,
+      value: footerSummaryInTimeInterval?.total || 0,
     },
     {
       name: handledByAIName,
-      value: callsHandledByAIPercentage,
+      value: footerSummaryInTimeInterval?.handledByAI || 0,
     },
     {
       name: handledByHumanName,
-      value: callsHandledByHumanPercentage,
+      value: footerSummaryInTimeInterval?.handledByHuman || 0,
     },
   ];
   return callOutcomesTotals;

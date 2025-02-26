@@ -1,8 +1,7 @@
-import {
-  ChartOptions,
-  SeriesItem,
-  CallRecordsMigration,
-} from "../../../../types/data_types";
+import { ChartOptions, SeriesItem } from "../../../../types/data_types";
+
+import { FetchedDataType } from "../../../../types/data_fetching_types";
+
 import {
   generateYAxis,
   generateChartTitle,
@@ -12,13 +11,13 @@ import {
 } from "../../../utils_charts_options_object";
 
 interface CallsOutcomesInput {
-  fetchedData: CallRecordsMigration;
+  fetchedData: FetchedDataType;
   title: string;
   xAxisName: string;
   seriesData: SeriesItem[];
   yAxisName: string;
 }
-export function generateCallOutcomesOptions({
+export function generateHandlingOverviewOptions({
   fetchedData,
   title,
   xAxisName,

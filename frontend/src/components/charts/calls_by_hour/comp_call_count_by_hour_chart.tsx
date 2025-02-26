@@ -8,7 +8,7 @@ import React, { useEffect } from "react";
 
 import { useLoginData } from "../../../hooks/fetch_data_hooks/hook_use_login_data";
 import {
-  ChartTotals,
+  FooterSummaryTotalsType,
   DashboardChartInput,
   SeriesItem,
 } from "../../../types/data_types";
@@ -66,17 +66,22 @@ export const CallCountByHourChart: React.FC<DashboardChartInput> = ({
       yAxisName: t("chartInformation.peakHours.yAxisName"),
     });
 
-    // GENERATE TOTALS
-    const callCountByHourTotals: ChartTotals = generateCallCountByHourTotals({
-      fetchedData: fetchedData,
-      peakHourName: t("chartInformation.peakHours.totals.peakHour"),
-      peakVolumeName: t("chartInformation.peakHours.totals.peakVolume"),
-    });
+    // GENERATE footerSummaryInTimeInterval
+    const callCountByHourTotals: FooterSummaryTotalsType =
+      generateCallCountByHourTotals({
+        fetchedData: fetchedData,
+        peakHourName: t(
+          "chartInformation.peakHours.footerSummaryInTimeInterval.peakHour"
+        ),
+        peakVolumeName: t(
+          "chartInformation.peakHours.footerSummaryInTimeInterval.peakVolume"
+        ),
+      });
 
     return (
       <DashboardChart
         options={chartOptions}
-        totals={callCountByHourTotals}
+        footerSummaryInTimeInterval={callCountByHourTotals}
         openModal={() => {
           renderModal(<PeakHoursModal />);
         }}

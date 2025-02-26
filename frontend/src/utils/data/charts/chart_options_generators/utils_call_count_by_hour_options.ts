@@ -1,8 +1,6 @@
-import {
-  CallRecordsMigration,
-  SeriesItem,
-  ChartOptions,
-} from "../../../../types/data_types";
+import { SeriesItem, ChartOptions } from "../../../../types/data_types";
+
+import { FetchedDataType } from "../../../../types/data_fetching_types";
 
 import {
   generateYAxis,
@@ -13,7 +11,7 @@ import {
 } from "../../../utils_charts_options_object";
 
 interface CallCountByHourInput {
-  fetchedData: CallRecordsMigration;
+  fetchedData: FetchedDataType;
   seriesData: SeriesItem[];
   title: string;
   xAxisName: string;

@@ -1,124 +1,10 @@
 import { ReactNode } from "react";
 
-interface HandlingOverviewDaily {
-  chartKeys: string[];
-  callsHandledByAI: number[];
-  callsHandledByAIPercentage: number[];
-
-  callsHandledByHuman: number[];
-  callsHandledByHumanPercentage: number[];
-}
-
-interface HandlingOverviewTotal {
-  total: number;
-  handledByAI: number;
-  handledByHuman: number;
-  handledByAIPercentage: number;
-  handledByHumanPercentage: number;
-}
-
-interface AverageDurationDaily {
-  callsHandledByAIAverageDuration: number[];
-  callsHandledByHumanAverageDuration: number[];
-  callsHandledByAIPercentage: number;
-  callsHandledByHumanPercentage: number;
-  chartKeys: string[];
-}
-
-interface PeakTimes {
-  hourOfTheDay: string[];
-  callsHandledByHuman: number[];
-  callsHandledByAI: number[];
-  peakHour: number;
-  peakVolume: number;
-  total: number[];
-}
-
-export interface CallRecordsMigration {
-  handlingOverviewDaily: HandlingOverviewDaily;
-  handlingOverviewTotal: HandlingOverviewTotal;
-  averageDurationDaily: AverageDurationDaily;
-  peakTimes: PeakTimes;
-}
-
-export interface YearCallRecord {
+export interface HandlingOverviewYearRecordType {
   months: string[];
   year: number;
   scheduledCallsByMonth: number[];
   transferredCallsByMonth: number[];
-}
-
-export interface CallRecord {
-  callId: string;
-  phoneNumber: string;
-  startTime: Date;
-  endTime: Date;
-  reason: "scheduling" | "rescheduling" | "cancellation";
-  status: "scheduled" | "transferred";
-  failure_reason:
-    | "none"
-    | "dob_mismatch"
-    | "first_name_mismatch"
-    | "last_name_mismatch";
-
-  chartKeys?: string[];
-  callsHandledByAI?: number[];
-  callsHandledByHuman?: number[];
-}
-
-export type CallRecords = CallRecord[];
-
-export interface ComponentDataInput {
-  callRecords: CallRecord[];
-}
-
-export interface AggregatedData {
-  totalCalls: number;
-  callReasons: {
-    scheduling: number;
-    rescheduling: number;
-    cancellation: number;
-  };
-  timeDistribution: {
-    morning: { scheduling: number; rescheduling: number; cancellation: number };
-    evening: { scheduling: number; rescheduling: number; cancellation: number };
-    night: { scheduling: number; rescheduling: number; cancellation: number };
-  };
-
-  // New fields for outcomes
-  totalScheduledCalls: number;
-  totalTransferredCalls: number;
-  transferredFailureReasons: {
-    none: number;
-    dob_mismatch: number;
-    first_name_mismatch: number;
-    last_name_mismatch: number;
-  };
-
-  // NEW FIELDS REQUESTED:
-  transferredPercentage: number; // percentage of transferred calls
-  averageDurationScheduledCalls: number; // average duration of scheduled calls in seconds
-  averageDurationTransferredCalls: number; // average duration of transferred calls in seconds
-}
-
-export type CallReasons = {
-  scheduling: number;
-  rescheduling: number;
-  cancellation: number;
-};
-
-export type TimeFrame = "night" | "morning" | "evening";
-
-// Simplified structure for day/timeFrame grouping used in stacked bar charts.
-export type SimpleDayTimeDistribution = {
-  morning: number;
-  evening: number;
-  night: number;
-};
-
-export interface ComponentInput {
-  year?: number;
-  daysInterval: number;
 }
 
 export interface DashboardChartInput {
@@ -216,7 +102,7 @@ interface ChartTotal {
   value: number;
 }
 
-export type ChartTotals = ChartTotal[];
+export type FooterSummaryTotalsType = ChartTotal[];
 
 export interface ModalChartInput {
   options: ChartOptions;
@@ -233,7 +119,7 @@ export interface ModalChartOptions {
 }
 export interface DashboardChartProps {
   options: ChartOptions;
-  totals?: ChartTotals;
+  footerSummaryInTimeInterval?: FooterSummaryTotalsType;
   openModal: () => void;
 }
 
@@ -244,34 +130,4 @@ export interface UpperSectionInput {
 
 export interface ActionToolbarInput {
   openModal: () => void;
-}
-
-//--------------MODAL TYPES--------------
-
-/**
- * Interface for the processed yearly data.
- * This ensures that every object in processedData has a consistent structure.
- */
-export interface TrendsYearData {
-  months: string[];
-  scheduledCallsByMonth: number[];
-  transferredCallsByMonth: number[];
-  year: number;
-  isPending: boolean;
-}
-
-/**
- * Interface for the date range.
- */
-export interface DateRange {
-  initialDate: string;
-  endDate: string;
-}
-
-export interface TrendsData {
-  isPending?: boolean;
-  months: string[];
-  scheduledCallsByMonth: number[];
-  transferredCallsByMonth: number[];
-  year: number;
 }

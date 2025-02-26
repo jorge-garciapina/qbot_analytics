@@ -1,7 +1,7 @@
 import React from "react";
 
 import {
-  generateTrendSeriesData,
+  generateHandlingOverviewDetailsData,
   generateTrendsOptions,
 } from "../../../utils/data/charts";
 
@@ -9,7 +9,7 @@ import { ModalChart } from "../../chart_factory/chart_modal/comp_chart_modal";
 
 import {
   useClinicData,
-  useMultipleYearCallRecords,
+  useHandlingOverviewMultipleYearRecords,
   useDate,
 } from "../../../hooks";
 
@@ -34,7 +34,7 @@ export const HandlingOverviewModal: React.FC<HandlingOverviewDetailsInput> = ({
   const initialYear = evaluateYear(initialDayLogic.date);
   const endYear = evaluateYear(endDayLogic.date);
 
-  const { isPending, fetchedData } = useMultipleYearCallRecords({
+  const { isPending, fetchedData } = useHandlingOverviewMultipleYearRecords({
     queryKey: "get_multiple_year_data",
     initialYear,
     endYear,
@@ -42,7 +42,7 @@ export const HandlingOverviewModal: React.FC<HandlingOverviewDetailsInput> = ({
 
   if (isPending) return "Loading...";
 
-  const seriesData = generateTrendSeriesData(fetchedData!);
+  const seriesData = generateHandlingOverviewDetailsData(fetchedData!);
 
   const chartOptions = generateTrendsOptions({
     title: title,

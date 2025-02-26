@@ -1,5 +1,5 @@
 import express from "express";
-import dataGeneration from "./route_data_generation";
+import dataGeneration from "./data_generation";
 import calls from "./route_login";
 import handlingOverview from "./route_handling_overview";
 

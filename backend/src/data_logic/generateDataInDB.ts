@@ -3,7 +3,7 @@ import {
   CallStatus,
   CallReason,
   EscalationReasons,
-} from "../dataTypes";
+} from "../types/data_types";
 
 // This code
 const config = {

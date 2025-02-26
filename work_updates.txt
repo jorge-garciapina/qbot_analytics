@@ -1,36 +1,4 @@
-I need to create the logic to handle the granularity. 
-For this I need to create the apropiate routes to do that-
-
-I need to change "seriesData" in the "HandlingOverviewModal" (comp_handling_overview_modal.tsx).
-
-The key for this is to change how the information is retrieve from the database. 
-
-Keys: 
-- All the analysis must be made on the server side, otherwise, the application will have the same performance problems 
-  it had in the past. 
-- I need to ask what is better: 
-  1) Request all the information once the user opens the modal 
-  2) Request the information as needed. 
-
-How these scenarios could work: 
--------------------------------------------------------
-1) Requesting the whole information
-The data will be stored in an object such as: 
-data = {
-    hourlyData,
-    dailyData,
-    weeklyData,
-    monthlyData,
-    YearlyData, 
-}
-
-The "DateRangeButtonChart" buttons will only select the information that is displayed. 
--------------------------------------------------------
-2) Requesting the information as needed. 
-- This will imply to create the necessary routes in the backend to ask for the information in 
-  hourly, daily, weekly, monthly and yearly format.
-
-- The routes that will be used for this purpose need to accept the start date and end date
-
-First task: 
-Create the routes for the time granularity selectors.
+1) Implement the diferentiation for the 2 modals: Details and Data
+2) Create the endpoints to request the data using the hourly, daily, weekly, monthly and yearly buttons 
+   in the desired interval
+   

@@ -1,7 +1,7 @@
 import mongoose, { Model } from "mongoose";
 import { callSchema } from "./data_schema";
 
-import { RawCallRecord } from "../dataTypes";
+import { RawCallRecord } from "../types/data_types";
 
 export async function saveYearlyRecords({
   schemaName,

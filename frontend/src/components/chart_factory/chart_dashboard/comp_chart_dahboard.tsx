@@ -7,12 +7,12 @@ import { DashboardChartProps } from "../../../types/data_types";
 
 export const DashboardChart: React.FC<DashboardChartProps> = ({
   options,
-  totals,
+  footerSummaryInTimeInterval,
   openModal,
 }) => {
   const { title, ...otherOptions } = options;
 
-  const totalsDummy = totals || [
+  const totalsDummy = footerSummaryInTimeInterval || [
     {
       name: "",
       value: 0,
@@ -28,7 +28,7 @@ export const DashboardChart: React.FC<DashboardChartProps> = ({
           style={{ height: 400, width: "100%" }}
         />
       </ChartMiddleSectionContainer>
-      <BottomSection totals={totalsDummy} />
+      <BottomSection footerSummaryInTimeInterval={totalsDummy} />
     </ChartContainer>
   );
 };

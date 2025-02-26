@@ -1,4 +1,4 @@
-import { CallRecords } from "../../types/data_types";
+import { FetchedDataType } from "../../types/data_fetching_types";
 
 /**
  *
@@ -9,7 +9,7 @@ export async function fetchLoginData({
   queryKey,
 }: {
   queryKey: [string, string, string];
-}): Promise<CallRecords> {
+}): Promise<FetchedDataType> {
   const [query, initialDate, endDate] = queryKey;
 
   if (query != "login") {

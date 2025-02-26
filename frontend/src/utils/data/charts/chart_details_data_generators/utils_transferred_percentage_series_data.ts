@@ -1,10 +1,11 @@
-import { SeriesItem, CallRecordsMigration } from "../../../../types/data_types";
+import { SeriesItem } from "../../../../types/data_types";
+import { FetchedDataType } from "../../../../types/data_fetching_types";
 
 export function generateTransferredPercentageSeriesData({
   fetchedData,
   seriesName,
 }: {
-  fetchedData: CallRecordsMigration;
+  fetchedData: FetchedDataType;
   seriesName: string;
 }): SeriesItem[] {
   const seriesData =

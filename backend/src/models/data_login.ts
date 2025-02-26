@@ -1,7 +1,7 @@
 import mongoose, { Model } from "mongoose";
 import { callSchema } from "./data_schema";
 
-import { RawCallRecord } from "../dataTypes";
+import { RawCallRecord } from "../types/data_types";
 
 //----------------------------------------------------------------------------------
 export async function handlingOverviewTotalData({
@@ -233,7 +233,7 @@ export async function avarageCallDurationData({
           },
         },
       },
-      // 3. Group by day and call status, calculate totals and counts
+      // 3. Group by day and call status, calculate footerSummaryInTimeInterval and counts
       {
         $group: {
           _id: {

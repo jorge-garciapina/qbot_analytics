@@ -1,6 +1,6 @@
 import { Schema } from "mongoose";
 
-import { CallReason, CallStatus, EscalationReasons } from "../dataTypes";
+import { CallReason, CallStatus, EscalationReasons } from "../types/data_types";
 
 const callReasons: ReadonlyArray<CallReason> = [
   "scheduling",

@@ -20,4 +20,4 @@ after some refactoring and renaming, it could look like:
 
 import { genCallCountByHourData , genCallCountByHourOptions, genCallCountByHourTotals } from "../../../utils/data/charts/callCountByHour";
 
-callCountByHour can be a folder with an index.ts file that re-exports the individual files for the series data, options, and totals{coode}
+callCountByHour can be a folder with an index.ts file that re-exports the individual files for the series data, options, and footerSummaryInTimeInterval{coode}

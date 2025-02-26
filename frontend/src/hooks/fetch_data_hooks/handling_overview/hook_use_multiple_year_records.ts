@@ -7,7 +7,7 @@ type UseMultipleYearCallRecordsInput = {
   initialYear: number;
   endYear: number;
 };
-export function useMultipleYearCallRecords({
+export function useHandlingOverviewMultipleYearRecords({
   queryKey,
   initialYear,
   endYear,
