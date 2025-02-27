@@ -8,7 +8,7 @@ export type ValidGranularities =
   | "yearly";
 
 export function useDateGranularity() {
-  const [granularity, setGranularity] = useState<ValidGranularities>("monthly");
+  const [granularity, setGranularity] = useState<ValidGranularities>("yearly");
   function updateGranularity(newGranularity: ValidGranularities) {
     setGranularity(newGranularity);
   }

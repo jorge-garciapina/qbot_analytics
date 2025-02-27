@@ -5,7 +5,6 @@ import { HandlingOverviewMonthlyDataType } from "../../../../../types";
 export function generateHandlingOverviewMultipleYearDetailsData(
   dataToProcess: HandlingOverviewMonthlyDataType[]
 ): SeriesItem[] {
-  console.log("DATA TO PROCESS: ", dataToProcess);
   const seriesData: SeriesItem[] = dataToProcess.flatMap((current) => {
     return [
       {

@@ -26,8 +26,16 @@ router.get(
   "/multiple_year_data",
   async (req: Request, res: Response): Promise<void> => {
     try {
-      const initialYear: number = Number(req.query.initial_year);
-      const endYear: number = Number(req.query.end_year);
+      const initialDate: string = String(req.query.initial_date);
+      const endDate: string = String(req.query.end_date);
+
+      const start = new Date(initialDate);
+      const end = new Date(endDate);
+
+      const initialYear: number = start.getUTCFullYear();
+      const endYear: number = end.getUTCFullYear();
+
+      console.log();
 
       const yearsArray: number[] = Array.from(
         { length: endYear - initialYear + 1 },

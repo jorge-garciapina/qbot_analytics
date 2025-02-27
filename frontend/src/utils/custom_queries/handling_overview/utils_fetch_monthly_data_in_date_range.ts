@@ -4,12 +4,11 @@ export async function fetchHandlingOverviewMonthlyData({
 }: {
   queryKey: [string, string, string];
 }): Promise<HandlingOverviewMonthlyDataType> {
-  const test = 0;
   const [query, initialDate, endDate] = queryKey;
 
   const desiredEndpoint = "monthly_data_in_date_range";
 
-  if (query != "monthly_data_in_date_range") {
+  if (query != desiredEndpoint) {
     throw new Error(`Failed to fetch data from DB`);
   }
 

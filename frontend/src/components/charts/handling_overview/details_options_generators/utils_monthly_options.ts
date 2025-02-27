@@ -1,29 +1,23 @@
-import { useHandlingOverviewMonthlyRecords } from "../../../hooks";
+import { HandlingOverviewMonthlyDataType } from "../../../../types";
 import {
   generateHandlingOverviewMonthlyDetailsData,
   generateHandlingOverviewModalOptions,
-} from "../../../utils/data/charts";
+} from "../../../../utils/data/charts";
 
-interface HookInput {
-  initialDate: string;
-  endDate: string;
+import { ChartOptions } from "../../../../types/data_types";
+
+interface InputType {
+  fetchedData: HandlingOverviewMonthlyDataType | undefined;
   xAxisName: string;
   yAxisName: string;
   title: string;
 }
-export function useHandlingOverviewMonthlyHook({
-  initialDate,
-  endDate,
+export function handlingOverviewMonthlyOptions({
+  fetchedData,
   xAxisName,
   yAxisName,
   title,
-}: HookInput) {
-  const { isPending, fetchedData } = useHandlingOverviewMonthlyRecords({
-    queryKey: "monthly_data_in_date_range",
-    initialDate,
-    endDate,
-  });
-
+}: InputType): ChartOptions {
   const seriesData = fetchedData
     ? generateHandlingOverviewMonthlyDetailsData(fetchedData)
     : [];
@@ -35,5 +29,5 @@ export function useHandlingOverviewMonthlyHook({
     yAxisName: yAxisName,
   });
 
-  return { isPending, chartOptions };
+  return chartOptions;
 }
