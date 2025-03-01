@@ -33,6 +33,9 @@ export const HandlingOverviewDetailsModal: React.FC<
     } else if (granularityLogic.granularity === "monthly") {
       initialDayLogic.updateDate("2021-10-01T06:00:00.000Z");
       endDayLogic.updateDate("2022-05-30T06:00:00.000Z");
+    } else if (granularityLogic.granularity === "daily") {
+      initialDayLogic.updateDate("2022-12-25T00:00:00.000Z");
+      endDayLogic.updateDate("2023-01-06T00:00:00.000Z");
     }
   }, [granularityLogic.granularity]);
 
@@ -47,6 +50,7 @@ export const HandlingOverviewDetailsModal: React.FC<
   }
   //------------ END: DATE RELATED LOGIC ------------
 
+  //TODO: ask about a possible solution for the error that is being caused by the change in the granularity
   const { isPending, chartOptions } = useHandlingOverviewDetailsDataRecords({
     granularity: granularityLogic.granularity,
     initialDate: initialDayLogic.date,

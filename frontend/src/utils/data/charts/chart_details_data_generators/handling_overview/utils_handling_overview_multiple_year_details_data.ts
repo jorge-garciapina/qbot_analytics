@@ -8,16 +8,16 @@ export function generateHandlingOverviewMultipleYearDetailsData(
   const seriesData: SeriesItem[] = dataToProcess.flatMap((current) => {
     return [
       {
-        name: `${current.year} Scheduled`,
+        name: `${current.year} Calls Handled By Human`,
         type: "bar",
         stack: `${current.year}`,
-        data: current.scheduledCallsByMonth || [],
+        data: current.callsHandledByHuman || [],
       },
       {
         name: `${current.year} Transferred`,
         type: "bar",
         stack: `${current.year}`,
-        data: current.transferredCallsByMonth || [],
+        data: current.callsHandledByAI || [],
       },
     ];
   });

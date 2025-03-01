@@ -1,8 +1,8 @@
 export interface HandlingOverviewMonthlyDataType {
-  months: string[];
+  xAxis: string[];
   year: number;
-  scheduledCallsByMonth: number[];
-  transferredCallsByMonth: number[];
+  callsHandledByHuman: number[];
+  callsHandledByAI: number[];
 }
 
 export type ValidQueryKeys =

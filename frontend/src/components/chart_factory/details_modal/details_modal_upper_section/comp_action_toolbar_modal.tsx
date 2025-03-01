@@ -23,18 +23,18 @@ export const ActionToolbar: React.FC<ActionToolbarInput> = ({
       {/* <DropDownMenuChart /> */}
       <DateRangeButtonChart
         granularityModifier={granularityModifier}
-        granularity={"weekly"}
-        buttonText={"This Week"}
+        granularity={"daily"}
+        buttonText={"Daily"}
       />
       <DateRangeButtonChart
         granularityModifier={granularityModifier}
         granularity={"monthly"}
-        buttonText={"This Month"}
+        buttonText={"Monthly"}
       />
       <DateRangeButtonChart
         granularityModifier={granularityModifier}
         granularity={"yearly"}
-        buttonText={"This Year"}
+        buttonText={"Yearly"}
       />
       <DateRangeSelector
         initialDateModifier={(date) => {

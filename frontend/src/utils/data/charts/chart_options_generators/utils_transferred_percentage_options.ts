@@ -18,7 +18,7 @@ interface TransferredCallsInput {
   yAxisName: string;
 }
 
-export function generateTransferredCallsOptions({
+export function generateAIHandledCallsOptions({
   fetchedData,
   seriesData,
   title,

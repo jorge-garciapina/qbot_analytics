@@ -1,8 +1,5 @@
 // CHARTS IMPORTS:
 import HandlingOverviewChart from "./charts/handling_overview/comp_handling_overview_chart";
-import EscalationRateChart from "./charts/transferred_percentage/comp_transferred_percentage_chart";
-import AverageTimeToEscalateChart from "./charts/average_duration/comp_call_duration_chart";
-import CallCountByHourChart from "./charts/calls_by_hour/comp_call_count_by_hour_chart";
 
 // COMPONENT IMPORTS
 
@@ -80,24 +77,6 @@ const MainContainer = () => {
         endDate={endDayLogic.date}
       />
       <HandlingOverviewChart
-        initialDate={initialDayLogic.date}
-        endDate={endDayLogic.date}
-        refreshTrigger={refreshTrigger}
-        renderModal={renderModal}
-      />
-      <EscalationRateChart
-        initialDate={initialDayLogic.date}
-        endDate={endDayLogic.date}
-        refreshTrigger={refreshTrigger}
-        renderModal={renderModal}
-      />
-      <AverageTimeToEscalateChart
-        initialDate={initialDayLogic.date}
-        endDate={endDayLogic.date}
-        refreshTrigger={refreshTrigger}
-        renderModal={renderModal}
-      />
-      <CallCountByHourChart
         initialDate={initialDayLogic.date}
         endDate={endDayLogic.date}
         refreshTrigger={refreshTrigger}

@@ -7,7 +7,7 @@ interface HandlingOverviewFooterTotalsInput {
   handledByAIName: string;
   handledByHumanName: string;
 }
-export function generateTransferredPercentageTotals({
+export function generateHumanHandledCallsPercentageTotals({
   fetchedData,
   totalName,
   handledByAIName,

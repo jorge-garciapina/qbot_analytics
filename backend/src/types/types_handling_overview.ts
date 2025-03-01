@@ -4,9 +4,9 @@ export interface AggregatedData {
 }
 
 export interface HandlingOverviewMonthlyData {
-  months: string[];
-  scheduledCallsByMonth: number[];
-  transferredCallsByMonth: number[];
+  xAxis: string[];
+  callsHandledByHuman: number[];
+  callsHandledByAI: number[];
   year: number;
 }
 

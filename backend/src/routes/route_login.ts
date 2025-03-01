@@ -2,8 +2,6 @@ import express, { Router, Request, Response } from "express";
 import {
   handlingOverviewTotalData,
   handlingOverviewChartData,
-  avarageCallDurationData,
-  peakCallTimesData,
 } from "../models/data_login"; // Import the Call model
 
 const router: Router = express.Router();
@@ -17,6 +15,8 @@ router.get("/login", async (req: Request, res: Response): Promise<void> => {
   try {
     const initialDate = String(req.query.initial_date);
     const finalDate = String(req.query.final_date);
+
+    console.log("initialDate: ", initialDate);
     const handlingOverviewTotal = await handlingOverviewTotalData({
       initialDate,
       finalDate,
@@ -27,21 +27,9 @@ router.get("/login", async (req: Request, res: Response): Promise<void> => {
       finalDate,
     });
 
-    const averageDurationDaily = await avarageCallDurationData({
-      initialDate,
-      finalDate,
-    });
-
-    const peakTimes = await peakCallTimesData({
-      initialDate,
-      finalDate,
-    });
-
     const loginData = {
       handlingOverviewDaily: handlingOverviewDaily,
       handlingOverviewTotal: handlingOverviewTotal,
-      averageDurationDaily: averageDurationDaily,
-      peakTimes: peakTimes,
     };
 
     res.status(200).json(loginData); // Respond with the retrieved calls

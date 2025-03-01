@@ -1,7 +1,7 @@
 import { SeriesItem } from "../../../../types/data_types";
 import { FetchedDataType } from "../../../../types/data_fetching_types";
 
-export function generateTransferredPercentageSeriesData({
+export function generateAIHandledCallsPercentageSeriesData({
   fetchedData,
   seriesName,
 }: {

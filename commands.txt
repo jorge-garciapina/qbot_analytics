@@ -121,20 +121,20 @@ export async function getMonthlyDataInGivenYear(
   }
 
   // Construct an array of scheduled call volumes for each month
-  const scheduledCallsByMonth: number[] = months.map(
+  const callsHandledByHuman: number[] = months.map(
     (month) => findElement("scheduled")?.countsByMonth[month] || 0 // Default to 0 if undefined
   );
 
   // Construct an array of transferred call volumes for each month
-  const transferredCallsByMonth: number[] = months.map(
+  const callsHandledByAI: number[] = months.map(
     (month) => findElement("transferred")?.countsByMonth[month] || 0 // Default to 0 if undefined
   );
 
   // Return structured call volume data
   const HandlingOverviewMonthlyData: HandlingOverviewMonthlyData = {
     months,
-    scheduledCallsByMonth,
-    transferredCallsByMonth,
+    callsHandledByHuman,
+    callsHandledByAI,
     year,
   };
 

@@ -7,16 +7,16 @@ export function generateHandlingOverviewMonthlyDetailsData(
 ): SeriesItem[] {
   const seriesData: SeriesItem[] = [
     {
-      name: `${dataToProcess.year} Scheduled`,
+      name: `${dataToProcess.year} Calls Handled By Human`,
       type: "bar",
       stack: `${dataToProcess.year}`,
-      data: dataToProcess.scheduledCallsByMonth || [],
+      data: dataToProcess.callsHandledByHuman || [],
     },
     {
       name: `${dataToProcess.year} Transferred`,
       type: "bar",
       stack: `${dataToProcess.year}`,
-      data: dataToProcess.transferredCallsByMonth || [],
+      data: dataToProcess.callsHandledByAI || [],
     },
   ];
 
