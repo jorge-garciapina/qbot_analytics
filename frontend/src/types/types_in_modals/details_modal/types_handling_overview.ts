@@ -6,8 +6,6 @@ export interface HandlingOverviewMonthlyDataType {
 }
 
 export type ValidQueryKeys =
-  | "multiple_year_data"
+  | "yearly_data_in_date_range"
   | "monthly_data_in_date_range"
-  | "weekly_data_in_date_range"
-  | "daily_data_in_date_range"
-  | "hourly_data_in_date_range";
+  | "daily_data_in_date_range";

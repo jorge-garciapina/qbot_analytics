@@ -13,7 +13,7 @@ export function generateHandlingOverviewMonthlyDetailsData(
       data: dataToProcess.callsHandledByHuman || [],
     },
     {
-      name: `${dataToProcess.year} Transferred`,
+      name: `${dataToProcess.year} Calls Handled By AI`,
       type: "bar",
       stack: `${dataToProcess.year}`,
       data: dataToProcess.callsHandledByAI || [],

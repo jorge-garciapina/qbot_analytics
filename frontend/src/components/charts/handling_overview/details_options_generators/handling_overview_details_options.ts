@@ -34,7 +34,7 @@ export function handlingOverviewDetailsOptions({
         data: fetchedData.callsHandledByHuman || [],
       },
       {
-        name: `${fetchedData.year} Transferred`,
+        name: `${fetchedData.year} Calls Handled By AI`,
         type: "bar",
         stack: `${fetchedData.year}`,
         data: fetchedData.callsHandledByAI || [],

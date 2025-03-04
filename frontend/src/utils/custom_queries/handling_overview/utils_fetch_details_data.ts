@@ -1,63 +1,67 @@
 import { ValidGranularities } from "../../../hooks";
 import { ChartOptions } from "../../../types/data_types";
-import { handlingOverviewMultipleYearOptions } from "../../../components/charts/handling_overview/details_options_generators/utils_multiple_year_options";
-import { handlingOverviewBCMultipleYear } from "./backend_communication/utils_backend_multiple_year";
-import { handlingOverviewBCDaily } from "./backend_communication/utils_backend_daily";
-import { handlingOverviewBCMonthly } from "./backend_communication/utils_backend_monthly";
+import { requestHandlingOverviewChartData } from "./backend_communication/utils_request_handling_overview_chart_data";
+import { ValidQueryKeys } from "../../../types";
+
+/**
+ * Asynchronously fetches and returns handling overview chart data based on the provided query parameters.
+ *
+ * This function determines the appropriate API query key based on the given granularity (e.g., daily, monthly, yearly)
+ * and requests the corresponding chart data from the backend.
+ *
+ * @param queryKey - An array containing:
+ *   - `initialDate` (string): The start date for fetching data (ISO 8601 format).
+ *   - `endDate` (string): The end date for fetching data (ISO 8601 format).
+ *   - `granularity` (ValidGranularities): Defines the data grouping level (e.g., daily, monthly, yearly).
+ *   - `xAxisName` (string): The label for the X-axis.
+ *   - `yAxisName` (string): The label for the Y-axis.
+ *   - `title` (string): The chart title.
+ *
+ * @returns A `Promise` resolving to `ChartOptions` containing the formatted data ready for visualization.
+ *
+ * @throws An error if an unsupported granularity is provided.
+ */
 export async function fetchDetailsData({
   queryKey,
 }: {
   queryKey: [string, string, ValidGranularities, string, string, string];
 }): Promise<ChartOptions> {
+  // Destructure queryKey array to extract parameters
   const [initialDate, endDate, granularity, xAxisName, yAxisName, title] =
     queryKey;
 
-  if (granularity === "hourly") {
-    console.log(granularity);
-  } else if (granularity === "daily") {
-    console.log(granularity);
-    const dailyOptions = await handlingOverviewBCDaily({
-      query: "daily_data_in_date_range",
-      initialDate,
-      endDate,
-      xAxisName,
-      yAxisName,
-      title,
-    });
+  /**
+   * Maps each valid granularity to its respective backend query key.
+   * - Only `daily`, `monthly`, and `yearly` granularities have valid API endpoints.
+   * - Unsupported granularities (e.g., `hourly`, `weekly`) are mapped to an empty string.
+   */
+  const queryMap: Record<ValidGranularities, ValidQueryKeys | ""> = {
+    hourly: "",
+    daily: "daily_data_in_date_range",
+    weekly: "",
+    monthly: "monthly_data_in_date_range",
+    yearly: "yearly_data_in_date_range",
+  };
 
-    return dailyOptions;
-  } else if (granularity === "weekly") {
-    console.log(granularity);
-  } else if (granularity === "monthly") {
-    const monthlyOptions = await handlingOverviewBCMonthly({
-      query: "monthly_data_in_date_range",
-      initialDate,
-      endDate,
-      xAxisName,
-      yAxisName,
-      title,
-    });
+  /**
+   * Determines the backend API query key based on the provided granularity.
+   * - Defaults to "daily_data_in_date_range" if the granularity is unsupported.
+   */
+  const query: ValidQueryKeys =
+    (queryMap[granularity] as ValidQueryKeys) || "daily_data_in_date_range";
 
-    return monthlyOptions;
-  } else if (granularity === "yearly") {
-    const multipleYearOptions = await handlingOverviewBCMultipleYear({
-      query: "multiple_year_data",
-      initialDate,
-      endDate,
-      xAxisName,
-      yAxisName,
-      title,
-    });
-
-    return multipleYearOptions;
+  // Ensure the provided granularity is valid; otherwise, throw an error.
+  if (!queryMap[granularity]) {
+    throw new Error("No such granularity");
   }
 
-  const chartOptions = handlingOverviewMultipleYearOptions({
-    fetchedData: [],
+  // Fetch and return chart data based on the determined query type.
+  return requestHandlingOverviewChartData({
+    query,
+    initialDate,
+    endDate,
     xAxisName,
     yAxisName,
     title,
   });
-
-  return chartOptions;
 }

@@ -2,7 +2,6 @@ export { generateCallCountByHourSeriesData } from "./chart_details_data_generato
 export { generateCallDurationSeriesData } from "./chart_details_data_generators/utils_call_duration_series";
 export { generateHandlingOverviewSeriesData } from "./chart_details_data_generators/handling_overview/utils_handling_overview_series_data";
 export { generateAIHandledCallsPercentageSeriesData } from "./chart_details_data_generators/utils_transferred_percentage_series_data";
-export { generateHandlingOverviewMultipleYearDetailsData } from "./chart_details_data_generators/handling_overview/utils_handling_overview_multiple_year_details_data";
 export { generateHandlingOverviewMonthlyDetailsData } from "./chart_details_data_generators/handling_overview/utils_handling_overview_monthly_details_data";
 export { generateHandlingOverviewModalOptions } from "./chart_options_generators/utils_trend_options";
 export { generateAIHandledCallsOptions } from "./chart_options_generators/utils_transferred_percentage_options";

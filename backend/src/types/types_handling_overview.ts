@@ -3,7 +3,7 @@ export interface AggregatedData {
   countsByMonth: Record<string, number>;
 }
 
-export interface HandlingOverviewMonthlyData {
+export interface HandlingOverviewDetailsChartData {
   xAxis: string[];
   callsHandledByHuman: number[];
   callsHandledByAI: number[];
