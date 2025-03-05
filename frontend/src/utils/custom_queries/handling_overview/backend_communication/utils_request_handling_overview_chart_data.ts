@@ -1,6 +1,6 @@
 import { HandlingOverviewMonthlyDataType } from "../../../../types";
 import { ChartOptions } from "../../../../types/data_types";
-import { handlingOverviewDetailsOptions } from "../../../../components/charts/handling_overview/details_options_generators/handling_overview_details_options";
+import { handlingOverviewDetailsOptions } from "../../../../components/charts/handling_overview/handling_overview_details_options";
 import { ValidQueryKeys } from "../../../../types";
 
 /**

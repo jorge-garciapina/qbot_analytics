@@ -2,7 +2,14 @@ import { DashboardChartUpperSectionContainer } from "../../../../mui_configurati
 import { TitleContainer } from "./comp_title_container";
 
 import { ActionToolbar } from "./comp_action_toolbar_dashboard";
-import { UpperSectionInput } from "../../../../types/data_types";
+
+import { ModalNames } from "../../../charts/handling_overview/module_charts_in_modal";
+// import { UpperSectionInput } from "../../../../types/data_types";
+
+export interface UpperSectionInput {
+  title: string;
+  openModal: (selectedModal: ModalNames) => void;
+}
 
 export const UpperSectionDashboardChart: React.FC<UpperSectionInput> = ({
   title,

@@ -3,7 +3,20 @@ import { UpperSectionDashboardChart } from "./upper_section/comp_upper_section_d
 import { BottomSection } from "./bottom_section/comp_bottom_section";
 import { ChartMiddleSectionContainer } from "../../../mui_configurations/styled_components/chart_sections/styled_chart_middle_section";
 import ReactECharts from "echarts-for-react";
-import { DashboardChartProps } from "../../../types/data_types";
+import {
+  // DashboardChartProps,
+  ChartOptions,
+  FooterSummaryTotalsType,
+} from "../../../types/data_types";
+
+import { ModalNames } from "../../charts/handling_overview/module_charts_in_modal";
+
+//FIXME: I defined this interface provisionally, I need to update the typing file
+interface DashboardChartProps {
+  options: ChartOptions;
+  footerSummaryInTimeInterval?: FooterSummaryTotalsType;
+  openModal: (selectedModal: ModalNames) => void;
+}
 
 export const DashboardChart: React.FC<DashboardChartProps> = ({
   options,

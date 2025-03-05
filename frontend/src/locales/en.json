@@ -69,8 +69,8 @@
       }
     },
     "buttons": {
-      "trends": "Trends",
       "details": "Details",
+      "data": "Data",
       "info": "Information"
     }
   },

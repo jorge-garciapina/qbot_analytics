@@ -36,6 +36,8 @@ const MainContainer = () => {
   //----------------END: Refresh Section----------------
   //-------------------------------------------------------------
   //----------------START: Date Section----------------
+  // TODO: it is important to consider that this functionality might be removed,
+  //       (the date interval will be controlled in the details or data modals)
   const { initialDate: start, endDate: end } = generateInitialDateInterval();
   const initialDayLogic = useDate(start);
   const endDayLogic = useDate(end);

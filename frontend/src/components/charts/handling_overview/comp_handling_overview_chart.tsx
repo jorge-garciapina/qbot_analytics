@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 
-import { HandlingOverviewDetailsModal } from "./comp_handling_overview_modal";
+// import { HandlingOverviewDetailsModal } from "./comp_handling_overview_modal";
 import { DashboardChart } from "../../chart_factory/chart_dashboard/comp_chart_dahboard";
 
 import { useLoginData } from "../../../hooks/fetch_data_hooks/hook_use_login_data";
@@ -19,6 +19,10 @@ import {
   generateHandlingOverviewOptions,
   generateHandlingOverviewTotals,
 } from "../../../utils/data/charts";
+
+import { useChartsInModal } from "./module_charts_in_modal";
+
+import { ModalNames } from "./module_charts_in_modal";
 // Main Component
 const HandlingOverviewChart: React.FC<DashboardChartInput> = ({
   initialDate,
@@ -27,6 +31,16 @@ const HandlingOverviewChart: React.FC<DashboardChartInput> = ({
   renderModal,
 }) => {
   const { t } = useTranslation();
+  const title = t("chartInformation.handlingOverviewChart.chartTitle");
+  const xAxisName = t("chartInformation.handlingOverviewChart.xAxisName");
+  const yAxisName = t("chartInformation.handlingOverviewChart.yAxisName");
+
+  const chartsInModal = useChartsInModal({
+    title,
+    xAxisName,
+    yAxisName,
+    renderModal,
+  });
 
   const { isPending, error, fetchedData, refetch } = useLoginData({
     queryKey: "login",
@@ -55,9 +69,6 @@ const HandlingOverviewChart: React.FC<DashboardChartInput> = ({
       ),
     });
 
-    const title = t("chartInformation.handlingOverviewChart.chartTitle");
-    const xAxisName = t("chartInformation.handlingOverviewChart.xAxisName");
-    const yAxisName = t("chartInformation.handlingOverviewChart.yAxisName");
     // GENERATE OPTIONS:
     const chartOptions: ChartOptions = generateHandlingOverviewOptions({
       fetchedData: fetchedData,
@@ -86,14 +97,9 @@ const HandlingOverviewChart: React.FC<DashboardChartInput> = ({
       <DashboardChart
         options={chartOptions}
         footerSummaryInTimeInterval={handlingOverviewTotals}
-        openModal={() => {
-          renderModal(
-            <HandlingOverviewDetailsModal
-              title={title}
-              xAxisName={xAxisName}
-              yAxisName={yAxisName}
-            />
-          );
+        openModal={(selectedModal: ModalNames) => {
+          // In this part the charts module provides an entry-point
+          chartsInModal.setElement(selectedModal);
         }}
       />
     );

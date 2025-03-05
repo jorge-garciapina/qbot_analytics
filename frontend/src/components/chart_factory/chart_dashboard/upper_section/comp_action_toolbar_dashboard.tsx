@@ -7,29 +7,35 @@ import { IconButtonChart } from "./comp_icon_button";
 import { useTranslation } from "react-i18next";
 
 // TYPES IMPORTS
-import { ActionToolbarInput } from "../../../../types/data_types";
+// import { ActionToolbarInput } from "../../../../types/data_types";
+import { ModalNames } from "../../../charts/handling_overview/module_charts_in_modal";
+
+export interface ActionToolbarInput {
+  openModal: (selectedModal: ModalNames) => void;
+}
 
 // LIBRARY IMPORTS
 import { OpenInNew, Search } from "@mui/icons-material";
 export const ActionToolbar: React.FC<ActionToolbarInput> = ({ openModal }) => {
   const { t } = useTranslation();
 
-  function appointmentDetails() {
-    console.log("Appointment Details clicked");
-  }
   return (
     <ActionToolbarDashboardChartContainer>
       <DropDownMenuChart />
       <IconButtonChart
         icon={<OpenInNew />}
-        tooltipTitle={t("chartInformation.buttons.trends")}
-        onClick={() => openModal()}
+        tooltipTitle={t("chartInformation.buttons.details")}
+        onClick={() => {
+          openModal("details_modal");
+        }}
       />
 
       <IconButtonChart
         icon={<Search />}
-        tooltipTitle={t("chartInformation.buttons.details")}
-        onClick={appointmentDetails}
+        tooltipTitle={t("chartInformation.buttons.data")}
+        onClick={() => {
+          openModal("data_modal");
+        }}
       />
     </ActionToolbarDashboardChartContainer>
   );

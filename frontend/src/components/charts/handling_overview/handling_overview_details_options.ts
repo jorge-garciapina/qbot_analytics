@@ -1,14 +1,14 @@
-import { HandlingOverviewMonthlyDataType } from "../../../../types";
+import { HandlingOverviewMonthlyDataType } from "../../../types";
 
-import { ChartOptions } from "../../../../types/data_types";
+import { ChartOptions } from "../../../types/data_types";
 
-import { SeriesItem } from "../../../../types/data_types";
+import { SeriesItem } from "../../../types/data_types";
 
-import { generateChartTitle } from "../../../../utils/utils_charts_options_object";
-import { generateToolTip } from "../../../../utils/utils_charts_options_object";
-import { generateLegend } from "../../../../utils/utils_charts_options_object";
-import { generateXAxis } from "../../../../utils/utils_charts_options_object";
-import { generateYAxis } from "../../../../utils/utils_charts_options_object";
+import { generateChartTitle } from "../../../utils/utils_charts_options_object";
+import { generateToolTip } from "../../../utils/utils_charts_options_object";
+import { generateLegend } from "../../../utils/utils_charts_options_object";
+import { generateXAxis } from "../../../utils/utils_charts_options_object";
+import { generateYAxis } from "../../../utils/utils_charts_options_object";
 
 interface InputType {
   fetchedData: HandlingOverviewMonthlyDataType | undefined;

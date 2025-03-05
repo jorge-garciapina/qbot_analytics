@@ -50,7 +50,6 @@ export const HandlingOverviewDetailsModal: React.FC<
   }
   //------------ END: DATE RELATED LOGIC ------------
 
-  //TODO: ask about a possible solution for the error that is being caused by the change in the granularity
   const { isPending, chartOptions } = useHandlingOverviewDetailsDataRecords({
     granularity: granularityLogic.granularity,
     initialDate: initialDayLogic.date,
