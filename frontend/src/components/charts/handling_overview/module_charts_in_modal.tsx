@@ -6,24 +6,25 @@ interface InputType {
   title: string;
   xAxisName: string;
   yAxisName: string;
-  renderModal: (chartModal: ReactNode) => void;
-}
-
-interface OutputType {
-  currentElement: ReactNode;
-  setElement: (selectedModal: ModalNames) => void;
+  modalRenderingFunction: (chartModal: ReactNode) => void;
 }
 
 export type ModalNames = "details_modal" | "data_modal";
+
+interface OutputType {
+  currentElement: ReactNode;
+  renderModal: ({ modalToRender }: { modalToRender: ModalNames }) => void;
+}
 
 export function useChartsInModal({
   title,
   xAxisName,
   yAxisName,
-  renderModal,
+  modalRenderingFunction,
 }: InputType): OutputType {
   // State for the currently displayed modal component
   const [currentElement, setCurrentElement] = useState<ReactNode>(
+    //TODO: It is not good idea to use REact node into the state
     <HandlingOverviewDetailsModal
       title={title}
       xAxisName={xAxisName}
@@ -31,21 +32,21 @@ export function useChartsInModal({
     />
   );
 
-  // Flag to determine if renderModal should be triggered
+  // Flag to determine if modalRenderingFunction should be triggered
   const [shouldTriggerRenderModal, setShouldTriggerRenderModal] =
     useState(false);
 
   useEffect(() => {
     if (!shouldTriggerRenderModal) return; // Prevent execution on mount
 
-    renderModal(currentElement);
+    modalRenderingFunction(currentElement);
     setShouldTriggerRenderModal(false); // Reset flag after execution
   }, [currentElement]); // Runs when currentElement changes
 
-  function setElement(selectedModal: ModalNames) {
+  function renderModal({ modalToRender }: { modalToRender: ModalNames }) {
     let newElement: ReactNode;
 
-    if (selectedModal === "details_modal") {
+    if (modalToRender === "details_modal") {
       newElement = (
         <HandlingOverviewDetailsModal
           title={title}
@@ -53,15 +54,15 @@ export function useChartsInModal({
           yAxisName={yAxisName}
         />
       );
-    } else if (selectedModal === "data_modal") {
+    } else if (modalToRender === "data_modal") {
       newElement = <HandlingOverviewDataModal />;
     } else {
       return; // Prevent unnecessary updates
     }
 
     setCurrentElement(newElement);
-    setShouldTriggerRenderModal(true); // Set flag to trigger renderModal
+    setShouldTriggerRenderModal(true); // Set flag to trigger modalRenderingFunction
   }
 
-  return { currentElement, setElement };
+  return { currentElement, renderModal };
 }

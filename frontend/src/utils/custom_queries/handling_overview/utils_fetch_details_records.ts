@@ -21,7 +21,7 @@ import { ValidQueryKeys } from "../../../types";
  *
  * @throws An error if an unsupported granularity is provided.
  */
-export async function fetchDetailsData({
+export async function fetchDetailsRecords({
   queryKey,
 }: {
   queryKey: [string, string, ValidGranularities, string, string, string];

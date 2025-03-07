@@ -1,4 +1,4 @@
-import { HandlingOverviewMonthlyDataType } from "../../../../types";
+import { HandlingOverviewDataType } from "../../../../types";
 import { ChartOptions } from "../../../../types/data_types";
 import { handlingOverviewDetailsOptions } from "../../../../components/charts/handling_overview/handling_overview_details_options";
 import { ValidQueryKeys } from "../../../../types";
@@ -67,7 +67,7 @@ export async function requestHandlingOverviewChartData({
   }
 
   // Parse the retrieved JSON data from the database
-  const dataFromDB: HandlingOverviewMonthlyDataType = await dbResponse.json();
+  const dataFromDB: HandlingOverviewDataType = await dbResponse.json();
 
   /**
    * Format the retrieved data into chart-ready options using the shared function.

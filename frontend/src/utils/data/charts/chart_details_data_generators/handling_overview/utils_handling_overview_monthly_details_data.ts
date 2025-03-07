@@ -1,9 +1,9 @@
 import { SeriesItem } from "../../../../../types/data_types";
 
-import { HandlingOverviewMonthlyDataType } from "../../../../../types";
+import { HandlingOverviewDataType } from "../../../../../types";
 
 export function generateHandlingOverviewMonthlyDetailsData(
-  dataToProcess: HandlingOverviewMonthlyDataType
+  dataToProcess: HandlingOverviewDataType
 ): SeriesItem[] {
   const seriesData: SeriesItem[] = [
     {

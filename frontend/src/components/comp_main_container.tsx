@@ -50,6 +50,8 @@ const MainContainer = () => {
     setIsModalOpen(false);
     setModalContent(<></>);
   }
+
+  //FIXME: This function whould go inside the <DashboardChar/>
   function renderModal(chartModal: ReactNode) {
     setIsModalOpen(true);
     setModalContent(

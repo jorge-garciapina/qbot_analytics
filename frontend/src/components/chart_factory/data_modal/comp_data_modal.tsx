@@ -1,17 +1,13 @@
-import { HandlingOverviewDataType } from "../../../types";
-import { ValidGranularities } from "../../../hooks";
 import { ChartContainer } from "../../../mui_configurations/styled_components/chart_sections/styled_chart_container";
 import { ChartMiddleSectionContainer } from "../../../mui_configurations/styled_components/chart_sections/styled_chart_middle_section";
-import { UpperSectionModal } from "./details_modal_upper_section/comp_upper_section_modal";
-import ReactECharts from "echarts-for-react";
+import { UpperSectionDataModal } from "./data_modal_upper_section/comp_upper_section_modal";
+// import ReactECharts from "echarts-for-react";
+import { ValidGranularities } from "../../../hooks";
 
-import { handlingOverviewDetailsOptions } from "../../charts/handling_overview/handling_overview_details_options";
+import { HandlingOverviewDataType } from "../../../types";
 
-interface DetailsModalInput {
+interface DataModalInput {
   backendData: HandlingOverviewDataType | undefined;
-  title: string;
-  xAxisName: string;
-  yAxisName: string;
   initialDate: string;
   endDate: string;
   initialDateModifier: (date: string) => void;
@@ -19,29 +15,20 @@ interface DetailsModalInput {
   granularityModifier: (newGranularity: ValidGranularities) => void;
 }
 
-export const DetailsModal: React.FC<DetailsModalInput> = ({
+export const DataModal: React.FC<DataModalInput> = ({
   backendData,
   initialDate,
   endDate,
-  title,
-  xAxisName,
-  yAxisName,
   initialDateModifier,
   endDateModifier,
   granularityModifier,
 }) => {
-  const options = handlingOverviewDetailsOptions({
-    fetchedData: backendData || undefined,
-    xAxisName,
-    yAxisName,
-    title,
-  });
-  const { title: optionsTitle, ...chartOptions } = options;
-
+  console.log("BACKEND DATA: ", backendData);
   return (
     <ChartContainer>
-      <UpperSectionModal
-        title={optionsTitle.text}
+      <UpperSectionDataModal
+        title={"DATA MODAL"}
+        // title={title.text}
         initialDateModifier={initialDateModifier}
         endDateModifier={endDateModifier}
         granularityModifier={granularityModifier}
@@ -49,10 +36,11 @@ export const DetailsModal: React.FC<DetailsModalInput> = ({
         endDate={endDate}
       />
       <ChartMiddleSectionContainer>
-        <ReactECharts
+        {/* FIXME: In this place I have to put an entry-point to the table object (pending...) */}
+        {/* <ReactECharts
           option={chartOptions}
           style={{ height: 400, width: "100%" }}
-        />
+        /> */}
       </ChartMiddleSectionContainer>
     </ChartContainer>
   );

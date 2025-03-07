@@ -1,4 +1,4 @@
-import { HandlingOverviewMonthlyDataType } from "../../../types";
+import { HandlingOverviewDataType } from "../../../types";
 
 import { ChartOptions } from "../../../types/data_types";
 
@@ -11,7 +11,7 @@ import { generateXAxis } from "../../../utils/utils_charts_options_object";
 import { generateYAxis } from "../../../utils/utils_charts_options_object";
 
 interface InputType {
-  fetchedData: HandlingOverviewMonthlyDataType | undefined;
+  fetchedData: HandlingOverviewDataType | undefined;
   xAxisName: string;
   yAxisName: string;
   title: string;

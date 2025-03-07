@@ -39,7 +39,7 @@ const HandlingOverviewChart: React.FC<DashboardChartInput> = ({
     title,
     xAxisName,
     yAxisName,
-    renderModal,
+    modalRenderingFunction: renderModal,
   });
 
   const { isPending, error, fetchedData, refetch } = useLoginData({
@@ -98,8 +98,11 @@ const HandlingOverviewChart: React.FC<DashboardChartInput> = ({
         options={chartOptions}
         footerSummaryInTimeInterval={handlingOverviewTotals}
         openModal={(selectedModal: ModalNames) => {
-          // In this part the charts module provides an entry-point
-          chartsInModal.setElement(selectedModal);
+          // By using this structure we are making the DashboarChart a "blackbox", in the sense that
+          // in order to use one of their functionalities, we only need to put some function that will be
+          // executed when the modal is open.
+          // IN THIS PART WE CAN MONITOR CHANGES IN THE MODAL RENDERING PROCESS
+          chartsInModal.renderModal({ modalToRender: selectedModal });
         }}
       />
     );

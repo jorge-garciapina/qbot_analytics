@@ -1,15 +1,8 @@
-import React, { useEffect } from "react";
-
+import React from "react";
 import { DetailsModal } from "../../chart_factory/details_modal/comp_details_modal";
-
-import {
-  useClinicData,
-  useDate,
-  useDateGranularity,
-  ValidGranularities,
-} from "../../../hooks";
-
-import { useHandlingOverviewDetailsDataRecords } from "../../../hooks/fetch_data_hooks/handling_overview/hook_details_data";
+import { useClinicData } from "../../../hooks";
+import { useHandlingOverviewRecords } from "../../../hooks/fetch_data_hooks/handling_overview/hook_handling_overview_records";
+import { useGranularityLogic } from "./hook_use_granularity_logic";
 
 interface HandlingOverviewDetailsInput {
   title: string;
@@ -20,57 +13,39 @@ interface HandlingOverviewDetailsInput {
 export const HandlingOverviewDetailsModal: React.FC<
   HandlingOverviewDetailsInput
 > = ({ title, xAxisName, yAxisName }) => {
+  // 1) Pull the initial and end dates from the global clinic data
   const { initialDate, endDate } = useClinicData();
 
-  //------------START: DATE RELATED LOGIC------------
-  const initialDayLogic = useDate(initialDate);
-  const endDayLogic = useDate(endDate);
-  const granularityLogic = useDateGranularity();
-  useEffect(() => {
-    if (granularityLogic.granularity === "yearly") {
-      initialDayLogic.updateDate(initialDate);
-      endDayLogic.updateDate(endDate);
-    } else if (granularityLogic.granularity === "monthly") {
-      initialDayLogic.updateDate("2021-10-01T06:00:00.000Z");
-      endDayLogic.updateDate("2022-05-30T06:00:00.000Z");
-    } else if (granularityLogic.granularity === "daily") {
-      initialDayLogic.updateDate("2022-12-25T00:00:00.000Z");
-      endDayLogic.updateDate("2023-01-06T00:00:00.000Z");
-    }
-  }, [granularityLogic.granularity]);
+  // 2) Manage granularity logic (daily, monthly, etc.)
+  const {
+    granularity,
+    initialDate: adjustedInitialDate,
+    endDate: adjustedEndDate,
+    granularityModifier,
+    initialDateModifier,
+    endDateModifier,
+  } = useGranularityLogic(initialDate, endDate);
 
-  function initialDateModifier(date: string) {
-    initialDayLogic.updateDate(date);
-  }
-  function endDateModifier(date: string) {
-    endDayLogic.updateDate(date);
-  }
-  function granularityModifier(newGranularity: ValidGranularities) {
-    granularityLogic.updateGranularity(newGranularity);
-  }
-  //------------ END: DATE RELATED LOGIC ------------
-
-  const { isPending, chartOptions } = useHandlingOverviewDetailsDataRecords({
-    granularity: granularityLogic.granularity,
-    initialDate: initialDayLogic.date,
-    endDate: endDayLogic.date,
-    xAxisName,
-    yAxisName,
-    title,
+  // 3) Fetch the raw data from the backend
+  const { isPending, rawData } = useHandlingOverviewRecords({
+    granularity,
+    initialDate: adjustedInitialDate,
+    endDate: adjustedEndDate,
   });
 
   if (isPending) return "Loading...";
 
-  //------------ END: MULTIPLE YEAR CHART LOGIC ------------
-
   return (
     <DetailsModal
-      options={chartOptions!}
-      initialDateModifier={initialDateModifier}
-      endDateModifier={endDateModifier}
+      backendData={rawData}
+      title={title}
+      xAxisName={xAxisName}
+      yAxisName={yAxisName}
+      initialDate={adjustedInitialDate}
+      endDate={adjustedEndDate}
       granularityModifier={granularityModifier}
-      initialDate={initialDayLogic.date}
-      endDate={endDayLogic.date}
+      endDateModifier={endDateModifier}
+      initialDateModifier={initialDateModifier}
     />
   );
 };

@@ -11,7 +11,6 @@ import {
 
 import { ModalNames } from "../../charts/handling_overview/module_charts_in_modal";
 
-//FIXME: I defined this interface provisionally, I need to update the typing file
 interface DashboardChartProps {
   options: ChartOptions;
   footerSummaryInTimeInterval?: FooterSummaryTotalsType;

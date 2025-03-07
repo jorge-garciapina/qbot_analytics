@@ -1,4 +1,4 @@
-export interface HandlingOverviewMonthlyDataType {
+export interface HandlingOverviewDataType {
   xAxis: string[];
   year: number;
   callsHandledByHuman: number[];
