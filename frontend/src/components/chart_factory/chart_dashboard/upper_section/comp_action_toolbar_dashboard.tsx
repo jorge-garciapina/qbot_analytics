@@ -8,8 +8,7 @@ import { useTranslation } from "react-i18next";
 
 // TYPES IMPORTS
 // import { ActionToolbarInput } from "../../../../types/data_types";
-import { ModalNames } from "../../../charts/handling_overview/module_charts_in_modal";
-
+import { ModalNames } from "../../../modals/comp_modal_container";
 export interface ActionToolbarInput {
   openModal: (selectedModal: ModalNames) => void;
 }

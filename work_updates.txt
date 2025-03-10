@@ -1,4 +1,1 @@
-1) Implement the diferentiation for the 2 modals: Details and Data
-2) Create the endpoints to request the data using the hourly, daily, weekly, monthly and yearly buttons 
-   in the desired interval
-   
+Now I have to implement the theme to the application. 

@@ -4,11 +4,12 @@ import { Close } from "@mui/icons-material";
 import { CloseModalButton } from "../../mui_configurations/styled_components/buttons/styled_close_modal";
 import { ModalContainer } from "../../mui_configurations/styled_components/chart_sections/test_modal_container";
 
+export type ModalNames = "details_modal" | "data_modal";
 interface TestingModalProps {
   detailsModal: ReactNode;
   dataModal: ReactNode;
   isOpen: boolean;
-  modalId: "details" | "data" | null;
+  modalId: ModalNames | null;
   onClose: () => void;
 }
 
@@ -27,13 +28,13 @@ export const ChartModalContainer: React.FC<TestingModalProps> = ({
         </CloseModalButton>
 
         {/* Conditionally render content */}
-        {modalId === "details" && (
+        {modalId === "details_modal" && (
           <>
             <Typography variant="h6">Details Modal</Typography>
             {detailsModal}
           </>
         )}
-        {modalId === "data" && (
+        {modalId === "data_modal" && (
           <>
             <Typography variant="h6">Data Modal</Typography>
             {dataModal}

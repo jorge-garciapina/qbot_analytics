@@ -3,7 +3,7 @@ import HandlingOverviewChart from "../charts/handling_overview/comp_handling_ove
 
 // COMPONENT IMPORTS
 
-import { DashboardChartsContainer } from "../../mui_configurations/styled_components/styled_app_container";
+import { DashboardChartsContainer } from "./styled_dashboard_charts_container";
 import { DateRangeSelector } from "../date_related_components/date_range_selector/comp_range_selector";
 
 // UTILS
@@ -51,7 +51,6 @@ const DashboardCharts = () => {
       <Button variant="contained" onClick={toggleLanguage}>
         {t("changeLanguage")}
       </Button>{" "}
-      {/* <ChartModalContainer /> */}
       <DateRangeSelector
         initialDateModifier={(date) => {
           initialDayLogic.updateDate(date);

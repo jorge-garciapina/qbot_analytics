@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useLoginData } from "../../../hooks/fetch_data_hooks/hook_use_login_data";
 import { useTranslation } from "react-i18next";
 import {
-  generateHandlingOverviewSeriesData,
+  generateHandlingOverviewChartData,
   generateHandlingOverviewOptions,
   generateHandlingOverviewTotals,
 } from "../../../utils/data/charts";
@@ -12,8 +12,8 @@ import { HandlingOverviewDetailsModal } from "./comp_handling_overview_details_m
 import { HandlingOverviewDataModal } from "./comp_handling_overview_data_modal";
 import { DashboardChart } from "../../chart_factory/chart_dashboard/comp_chart_dahboard";
 import { DashboardChartInput } from "../../../types/data_types";
+import { ModalNames } from "../../modals/comp_modal_container";
 
-export type ModalNames = "details_modal" | "data_modal";
 // Main Component
 const HandlingOverviewChart: React.FC<DashboardChartInput> = ({
   initialDate,
@@ -32,7 +32,7 @@ const HandlingOverviewChart: React.FC<DashboardChartInput> = ({
   });
 
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [modalId, setModalId] = useState<"details" | "data" | null>(null);
+  const [modalId, setModalId] = useState<ModalNames | null>(null);
 
   useEffect(() => {
     refetch();
@@ -41,12 +41,12 @@ const HandlingOverviewChart: React.FC<DashboardChartInput> = ({
   // Open/Close Modal Functions
   function openDetailsModal() {
     setIsModalOpen(true);
-    setModalId("details");
+    setModalId("details_modal");
   }
 
   function openDataModal() {
     setIsModalOpen(true);
-    setModalId("data");
+    setModalId("data_modal");
   }
 
   function closeModal() {
@@ -60,7 +60,7 @@ const HandlingOverviewChart: React.FC<DashboardChartInput> = ({
 
   // ------------------------GENERATE CHART CONFIGURATION-----------------------
   if (fetchedData) {
-    const seriesData = generateHandlingOverviewSeriesData({
+    const seriesData = generateHandlingOverviewChartData({
       fetchedData,
       callsHandledByAIName: t(
         "chartInformation.handlingOverviewChart.handledByAI"
@@ -113,6 +113,8 @@ const HandlingOverviewChart: React.FC<DashboardChartInput> = ({
           options={chartOptions}
           footerSummaryInTimeInterval={handlingOverviewTotals}
           openModal={(selectedModal: ModalNames) => {
+            // The logic to control which modal will open is created inside the <DashboardChart/> component,
+            // this place is the entry point to that logic.
             if (selectedModal === "details_modal") {
               openDetailsModal();
             } else if (selectedModal === "data_modal") {

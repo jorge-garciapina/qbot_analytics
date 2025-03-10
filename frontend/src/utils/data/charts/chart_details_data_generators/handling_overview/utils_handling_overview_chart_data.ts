@@ -8,7 +8,7 @@ interface HandlingOverviewData {
   callsHandledByHumanName: string;
 }
 
-export function generateHandlingOverviewSeriesData({
+export function generateHandlingOverviewChartData({
   fetchedData,
   callsHandledByAIName,
   callsHandledByHumanName,
