@@ -5,6 +5,7 @@ import { UpperSectionDataModal } from "./data_modal_upper_section/comp_upper_sec
 import { ValidGranularities } from "../../../hooks";
 
 import { HandlingOverviewDataType } from "../../../types";
+import DataTable from "./table/comp_data_table";
 
 interface DataModalInput {
   backendData: HandlingOverviewDataType | undefined;
@@ -42,6 +43,8 @@ export const DataModal: React.FC<DataModalInput> = ({
           style={{ height: 400, width: "100%" }}
         /> */}
       </ChartMiddleSectionContainer>
+
+      <DataTable backendData={backendData}/>
     </ChartContainer>
   );
 };

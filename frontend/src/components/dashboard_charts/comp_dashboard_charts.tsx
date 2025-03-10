@@ -1,24 +1,26 @@
 // CHARTS IMPORTS:
-import HandlingOverviewChart from "./charts/handling_overview/comp_handling_overview_chart";
+import HandlingOverviewChart from "../charts/handling_overview/comp_handling_overview_chart";
 
 // COMPONENT IMPORTS
 
-import { AppContainer } from "../mui_configurations/styled_components/styled_app_container";
-import { ChartModalContainer } from "./modals/comp_modal_container";
-import { DateRangeSelector } from "./date_related_components/date_range_selector/comp_range_selector";
+import { DashboardChartsContainer } from "../../mui_configurations/styled_components/styled_app_container";
+import { DateRangeSelector } from "../date_related_components/date_range_selector/comp_range_selector";
 
 // UTILS
-import { generateInitialDateInterval } from "../utils/dates/utils_dates";
+import { generateInitialDateInterval } from "../../utils/dates/utils_dates";
 
 // HOOKS
-import { useDate } from "../hooks/date_hooks/hook_use_date";
+import { useDate } from "../../hooks/date_hooks/hook_use_date";
 
 // LIBRARY IMPORTS
 import { Button } from "@mui/material";
 import { useState, ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 
-const MainContainer = () => {
+
+import { ChartModalContainer } from "../modals/comp_modal_container";
+
+const DashboardCharts = () => {
   //----------------START: Translation Section----------------
   const { t, i18n } = useTranslation();
   // Function to toggle language
@@ -62,8 +64,11 @@ const MainContainer = () => {
   }
   //----------------END: Modal Section----------------
 
+  //TODO: It is important to consider that the buttons for the details and chart 
+  //      data will be called here
+
   return (
-    <AppContainer>
+    <DashboardChartsContainer>
       <Button variant="contained" onClick={handleRefresh}>
         Refresh
       </Button>
@@ -87,8 +92,8 @@ const MainContainer = () => {
         renderModal={renderModal}
       />
       {isModalOpen && modalContent}
-    </AppContainer>
+    </DashboardChartsContainer>
   );
 };
 
-export default MainContainer;
+export default DashboardCharts;
