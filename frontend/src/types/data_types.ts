@@ -1,10 +1,7 @@
-import { ReactNode } from "react";
-
 export interface DashboardChartInput {
   initialDate: string;
   endDate: string;
   refreshTrigger: number;
-  renderModal: (modalContent: ReactNode) => void;
 }
 
 //--------------CHART TYPES--------------

@@ -3,7 +3,7 @@ import { TitleContainer } from "./comp_title_container";
 
 import { ActionToolbar } from "./comp_action_toolbar_dashboard";
 
-import { ModalNames } from "../../../charts/handling_overview/module_charts_in_modal";
+import { ModalNames } from "../../../charts/handling_overview/comp_handling_overview_chart";
 // import { UpperSectionInput } from "../../../../types/data_types";
 
 export interface UpperSectionInput {

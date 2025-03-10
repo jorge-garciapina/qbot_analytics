@@ -1,25 +1,45 @@
-import { ModalContainer } from "../../mui_configurations/styled_components/chart_sections/styled_modal_container";
+import { ReactNode } from "react";
+import { Box, Typography } from "@mui/material";
 import { Close } from "@mui/icons-material";
 import { CloseModalButton } from "../../mui_configurations/styled_components/buttons/styled_close_modal";
-//  See edmundo_example
+import { ModalContainer } from "../../mui_configurations/styled_components/chart_sections/test_modal_container";
 
 interface TestingModalProps {
-  children: React.ReactNode;
+  detailsModal: ReactNode;
+  dataModal: ReactNode;
+  isOpen: boolean;
+  modalId: "details" | "data" | null;
   onClose: () => void;
 }
 
 export const ChartModalContainer: React.FC<TestingModalProps> = ({
-  title,
-  children,
+  detailsModal,
+  dataModal,
+  isOpen,
+  modalId,
   onClose,
 }) => {
   return (
-    <ModalContainer>
-      <CloseModalButton onClick={onClose}>
-        <Close />
-      </CloseModalButton>
+    <ModalContainer open={isOpen} onClose={onClose}>
+      <Box sx={{ p: 4 }}>
+        <CloseModalButton onClick={onClose}>
+          <Close />
+        </CloseModalButton>
 
-      {children}
+        {/* Conditionally render content */}
+        {modalId === "details" && (
+          <>
+            <Typography variant="h6">Details Modal</Typography>
+            {detailsModal}
+          </>
+        )}
+        {modalId === "data" && (
+          <>
+            <Typography variant="h6">Data Modal</Typography>
+            {dataModal}
+          </>
+        )}
+      </Box>
     </ModalContainer>
   );
 };

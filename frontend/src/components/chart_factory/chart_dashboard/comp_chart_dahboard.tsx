@@ -9,7 +9,7 @@ import {
   FooterSummaryTotalsType,
 } from "../../../types/data_types";
 
-import { ModalNames } from "../../charts/handling_overview/module_charts_in_modal";
+import { ModalNames } from "../../charts/handling_overview/comp_handling_overview_chart";
 
 interface DashboardChartProps {
   options: ChartOptions;

@@ -14,11 +14,8 @@ import { useDate } from "../../hooks/date_hooks/hook_use_date";
 
 // LIBRARY IMPORTS
 import { Button } from "@mui/material";
-import { useState, ReactNode } from "react";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
-
-
-import { ChartModalContainer } from "../modals/comp_modal_container";
 
 const DashboardCharts = () => {
   //----------------START: Translation Section----------------
@@ -45,27 +42,6 @@ const DashboardCharts = () => {
   const endDayLogic = useDate(end);
   //----------------END: Date Section----------------
   //-------------------------------------------------------------
-  //----------------START: Modal Section----------------
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-  const [modalContent, setModalContent] = useState<ReactNode>(<></>);
-  function closeModal() {
-    setIsModalOpen(false);
-    setModalContent(<></>);
-  }
-
-  //FIXME: This function whould go inside the <DashboardChar/>
-  function renderModal(chartModal: ReactNode) {
-    setIsModalOpen(true);
-    setModalContent(
-      <ChartModalContainer onClose={closeModal}>
-        {chartModal}
-      </ChartModalContainer>
-    );
-  }
-  //----------------END: Modal Section----------------
-
-  //TODO: It is important to consider that the buttons for the details and chart 
-  //      data will be called here
 
   return (
     <DashboardChartsContainer>
@@ -75,6 +51,7 @@ const DashboardCharts = () => {
       <Button variant="contained" onClick={toggleLanguage}>
         {t("changeLanguage")}
       </Button>{" "}
+      {/* <ChartModalContainer /> */}
       <DateRangeSelector
         initialDateModifier={(date) => {
           initialDayLogic.updateDate(date);
@@ -89,9 +66,7 @@ const DashboardCharts = () => {
         initialDate={initialDayLogic.date}
         endDate={endDayLogic.date}
         refreshTrigger={refreshTrigger}
-        renderModal={renderModal}
       />
-      {isModalOpen && modalContent}
     </DashboardChartsContainer>
   );
 };

@@ -1,0 +1,14 @@
+# Check what files changed
+git status
+
+# Add all changed files
+git add .
+
+# Commit changes with a message
+git commit -m "Added feature X"
+
+# Push updates to GitHub
+git push
+
+# (Optional) Pull latest changes before starting new work
+git pull
