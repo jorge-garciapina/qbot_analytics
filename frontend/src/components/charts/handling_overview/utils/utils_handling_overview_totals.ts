@@ -1,5 +1,5 @@
-import { FooterSummaryTotalsType } from "../../../types/data_types";
-import { HandlingOverviewDataType } from "../../../types";
+import { FooterSummaryTotalsType } from "../../../../types/data_types";
+import { HandlingOverviewDataType } from "../types/types_handling_overview";
 
 interface HandlingOverviewTotalsInput {
   handlingOverviewData: HandlingOverviewDataType; // New input type

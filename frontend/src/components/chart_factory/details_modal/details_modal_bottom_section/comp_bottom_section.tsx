@@ -1,4 +1,4 @@
-import { BottomSectionContainer } from "../../../../mui_configurations/styled_components/chart_sections/bottom_section/styled_bottom_main_container";
+import { BottomSectionContainer } from "../../chart_dashboard/chart_totals/styled_chart_totals";
 import { FooterSummaryTotalsType } from "../../../../types/data_types";
 import { TotalsViewer } from "./comp_totals_viewer";
 export const BottomSection: React.FC<{

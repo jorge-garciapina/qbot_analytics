@@ -14,7 +14,7 @@ export function HandlingOverviewDataModal() {
     endDateModifier,
   } = useGranularity(initialDate, endDate);
 
-  const { isPending, rawData } = useHandlingOverviewRecords({
+  const { isPending, handlingOverviewData } = useHandlingOverviewRecords({
     granularity,
     initialDate: adjustedInitialDate,
     endDate: adjustedEndDate,
@@ -24,7 +24,7 @@ export function HandlingOverviewDataModal() {
   return (
     <>
       <DataModal
-        backendData={rawData}
+        backendData={handlingOverviewData}
         initialDate={adjustedInitialDate}
         endDate={adjustedEndDate}
         granularityModifier={granularityModifier}

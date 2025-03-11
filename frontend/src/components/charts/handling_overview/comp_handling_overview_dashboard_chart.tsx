@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { generateHandlingOverviewTotals } from "./utils_handling_overview_totals";
+import { generateHandlingOverviewTotals } from "./utils/utils_handling_overview_totals";
 import { ChartModalContainer } from "../../modals/comp_modal_container";
 import { HandlingOverviewDetailsModal } from "./comp_handling_overview_details_modal";
 import { HandlingOverviewDataModal } from "./comp_handling_overview_data_modal";
@@ -9,7 +9,7 @@ import { DashboardChartInput } from "../../../types/data_types";
 import { ModalNames } from "../../modals/comp_modal_container";
 import { useHandlingOverviewRecords } from "./backend_communication/hook_handling_overview_records";
 
-import { handlingOverviewDetailsOptions } from "./handling_overview_details_options";
+import { handlingOverviewDetailsOptions } from "./utils/handling_overview_details_options";
 // Main Component
 const HandlingOverviewChart: React.FC<DashboardChartInput> = ({
   initialDate,
@@ -61,19 +61,23 @@ const HandlingOverviewChart: React.FC<DashboardChartInput> = ({
   // Handle loading and errors
   if (isPending) return "Loading...";
 
+  const totalName = t(
+    "chartInformation.handlingOverviewChart.footerSummaryInTimeInterval.total"
+  );
+  const handledByAIName = t(
+    "chartInformation.handlingOverviewChart.footerSummaryInTimeInterval.handledByAI"
+  );
+  const handledByHumanName = t(
+    "chartInformation.handlingOverviewChart.footerSummaryInTimeInterval.handledByHuman"
+  );
+
   // ------------------------GENERATE CHART CONFIGURATION-----------------------
   if (handlingOverviewData) {
     const handlingOverviewTotals = generateHandlingOverviewTotals({
       handlingOverviewData: handlingOverviewData,
-      totalName: t(
-        "chartInformation.handlingOverviewChart.footerSummaryInTimeInterval.total"
-      ),
-      handledByAIName: t(
-        "chartInformation.handlingOverviewChart.footerSummaryInTimeInterval.handledByAI"
-      ),
-      handledByHumanName: t(
-        "chartInformation.handlingOverviewChart.footerSummaryInTimeInterval.handledByHuman"
-      ),
+      totalName: totalName,
+      handledByAIName: handledByAIName,
+      handledByHumanName: handledByHumanName,
     });
 
     return (
@@ -85,6 +89,10 @@ const HandlingOverviewChart: React.FC<DashboardChartInput> = ({
               title={title}
               xAxisName={xAxisName}
               yAxisName={yAxisName}
+              footerSummaryInTimeInterval={handlingOverviewTotals}
+              totalName={totalName}
+              handledByAIName={handledByAIName}
+              handledByHumanName={handledByHumanName}
             />
           }
           dataModal={<HandlingOverviewDataModal />}

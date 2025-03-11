@@ -1,5 +1,4 @@
-import { TotalsViewerContainer } from "../../../../mui_configurations/ChartTitleContainercomponents/chart_sections/bottom_section/ChartTitleContainertotals_viewer";
-
+import { TotalsViewerContainer } from "../../chart_dashboard/chart_totals/styled_totals_viewer";
 interface TotalsViewerInput {
   name: string;
   value: number;

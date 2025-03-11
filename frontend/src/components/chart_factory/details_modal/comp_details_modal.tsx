@@ -1,11 +1,13 @@
-import { HandlingOverviewDataType } from "../../../types";
+import { HandlingOverviewDataType } from "../../charts/handling_overview/types/types_handling_overview";
 import { ValidGranularities } from "../../../hooks";
 import { ChartMiddleSectionContainer } from "../../../mui_configurations/styled_components/chart_sections/styled_chart_middle_section";
 import { UpperSectionModal } from "./details_modal_upper_section/comp_upper_section_modal";
 import ReactECharts from "echarts-for-react";
 
-import { handlingOverviewDetailsOptions } from "../../charts/handling_overview/handling_overview_details_options";
+import { handlingOverviewDetailsOptions } from "../../charts/handling_overview/utils/handling_overview_details_options";
 import { StyledDetailsModalContainer } from "./styled_details_modal_container";
+import { FooterSummaryTotalsType } from "../../../types/data_types";
+import { ChartTotals } from "../chart_totals/comp_chart_totals";
 
 interface DetailsModalInput {
   backendData: HandlingOverviewDataType | undefined;
@@ -14,6 +16,7 @@ interface DetailsModalInput {
   yAxisName: string;
   initialDate: string;
   endDate: string;
+  footerSummaryInTimeInterval: FooterSummaryTotalsType;
   initialDateModifier: (date: string) => void;
   endDateModifier: (date: string) => void;
   granularityModifier: (newGranularity: ValidGranularities) => void;
@@ -26,6 +29,7 @@ export const DetailsModal: React.FC<DetailsModalInput> = ({
   title,
   xAxisName,
   yAxisName,
+  footerSummaryInTimeInterval,
   initialDateModifier,
   endDateModifier,
   granularityModifier,
@@ -54,6 +58,7 @@ export const DetailsModal: React.FC<DetailsModalInput> = ({
           style={{ height: 400, width: "100%" }}
         />
       </ChartMiddleSectionContainer>
+      <ChartTotals footerSummaryInTimeInterval={footerSummaryInTimeInterval} />
     </StyledDetailsModalContainer>
   );
 };

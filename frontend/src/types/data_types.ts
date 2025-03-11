@@ -100,12 +100,6 @@ export interface ModalChartInput {
   endDate: string;
 }
 
-export interface DashboardChartProps {
-  options: ChartOptions;
-  footerSummaryInTimeInterval?: FooterSummaryTotalsType;
-  openModal: () => void;
-}
-
 export interface UpperSectionInput {
   title: string;
   openModal: () => void;

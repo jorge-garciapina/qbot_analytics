@@ -1,6 +1,6 @@
 import { StyledChartDashboardContainer } from "./styled_chart_dashboard_container";
 import { UpperSectionDashboardChart } from "./upper_section/comp_upper_section_dashboard";
-import { BottomSection } from "./bottom_section/comp_bottom_section";
+import { ChartTotals } from "../chart_totals/comp_chart_totals";
 import { ChartMiddleSectionContainer } from "../../../mui_configurations/styled_components/chart_sections/styled_chart_middle_section";
 import ReactECharts from "echarts-for-react";
 import {
@@ -12,7 +12,7 @@ import {
 import { ModalNames } from "../../modals/comp_modal_container";
 interface DashboardChartProps {
   options: ChartOptions;
-  footerSummaryInTimeInterval?: FooterSummaryTotalsType;
+  footerSummaryInTimeInterval: FooterSummaryTotalsType;
   openModal: (selectedModal: ModalNames) => void;
 }
 
@@ -39,7 +39,7 @@ export const DashboardChart: React.FC<DashboardChartProps> = ({
           style={{ height: 400, width: "100%" }}
         />
       </ChartMiddleSectionContainer>
-      <BottomSection footerSummaryInTimeInterval={totalsDummy} />
+      <ChartTotals footerSummaryInTimeInterval={totalsDummy} />
     </StyledChartDashboardContainer>
   );
 };

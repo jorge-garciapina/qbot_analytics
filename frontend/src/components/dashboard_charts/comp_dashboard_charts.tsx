@@ -1,5 +1,5 @@
 // CHARTS IMPORTS:
-import HandlingOverviewChart from "../charts/handling_overview/comp_handling_overview_chart";
+import HandlingOverviewChart from "../charts/handling_overview/comp_handling_overview_dashboard_chart";
 
 // COMPONENT IMPORTS
 
