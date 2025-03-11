@@ -1,10 +1,10 @@
 import React from "react";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import { StyledDatePicker } from "./styled_date_picker";
 import dayjs from "dayjs";
 import { useTranslation } from "react-i18next";
-import { useClinicData } from "../../../hooks/use_clinic_data";
+import { useClinicData } from "../../hooks/use_clinic_data";
 
 interface DatePickerInput {
   dateModifier: (date: string) => void;
@@ -37,7 +37,7 @@ export const DayPicker: React.FC<DatePickerInput> = ({
 
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <DatePicker
+      <StyledDatePicker
         // label="Select a Day"
         label={t("dateRangeSelector.label")}
         defaultValue={dayjs(defaultValue)}

@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 import { Box, Typography } from "@mui/material";
 import { Close } from "@mui/icons-material";
 import { CloseModalButton } from "../../mui_configurations/styled_components/buttons/styled_close_modal";
-import { ModalContainer } from "../../mui_configurations/styled_components/chart_sections/test_modal_container";
+import { StyledModalContainer } from "./styled_modal_container";
 
 export type ModalNames = "details_modal" | "data_modal";
 interface TestingModalProps {
@@ -21,7 +21,7 @@ export const ChartModalContainer: React.FC<TestingModalProps> = ({
   onClose,
 }) => {
   return (
-    <ModalContainer open={isOpen} onClose={onClose}>
+    <StyledModalContainer open={isOpen} onClose={onClose}>
       <Box sx={{ p: 4 }}>
         <CloseModalButton onClick={onClose}>
           <Close />
@@ -41,6 +41,6 @@ export const ChartModalContainer: React.FC<TestingModalProps> = ({
           </>
         )}
       </Box>
-    </ModalContainer>
+    </StyledModalContainer>
   );
 };

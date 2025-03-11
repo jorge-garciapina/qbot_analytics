@@ -4,7 +4,7 @@ import HandlingOverviewChart from "../charts/handling_overview/comp_handling_ove
 // COMPONENT IMPORTS
 
 import { DashboardChartsContainer } from "./styled_dashboard_charts_container";
-import { DateRangeSelector } from "../date_related_components/date_range_selector/comp_range_selector";
+import { DateRangeSelector } from "../date_related_components/comp_range_selector";
 
 // UTILS
 import { generateInitialDateInterval } from "../../utils/dates/utils_dates";
@@ -37,7 +37,10 @@ const DashboardCharts = () => {
   //----------------START: Date Section----------------
   // TODO: it is important to consider that this functionality might be removed,
   //       (the date interval will be controlled in the details or data modals)
-  const { initialDate: start, endDate: end } = generateInitialDateInterval();
+  // const { initialDate: start, endDate: end } = generateInitialDateInterval();
+  const { initialDate: start, endDate: end } = generateInitialDateInterval({
+    daysInterval: 7,
+  });
   const initialDayLogic = useDate(start);
   const endDayLogic = useDate(end);
   //----------------END: Date Section----------------

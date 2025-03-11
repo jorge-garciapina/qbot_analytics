@@ -1,7 +1,7 @@
 import { ActionToolbarDashboardChartContainer } from "../../../../mui_configurations/styled_components/chart_sections/upper_section/styled_action_tool_bar_dashboard_chart";
 // import { DropDownMenuChart } from "../../../library/comp_drop_down_menu_chart";
 import { DateRangeButtonChart } from "../../../library/buttons/comp_date_range_button_chart";
-import { DateRangeSelector } from "../../../date_related_components/date_range_selector/comp_range_selector";
+import { DateRangeSelector } from "../../../date_related_components/comp_range_selector";
 import { ValidGranularities } from "../../../../hooks";
 interface ActionToolbarInput {
   initialDateModifier: (date: string) => void;

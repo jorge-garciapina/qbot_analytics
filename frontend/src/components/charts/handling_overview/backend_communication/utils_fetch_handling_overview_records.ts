@@ -1,8 +1,8 @@
-import { ValidGranularities } from "../../../hooks";
-import { HandlingOverviewDataType } from "../../../types";
-import { ValidQueryKeys } from "../../../types";
+import { ValidGranularities } from "../../../../hooks";
+import { HandlingOverviewDataType } from "../../../../types";
+import { ValidQueryKeys } from "../../../../types";
 
-interface FetchDetailsRecordsRawArgs {
+interface FetchHandlingOverviewRecordsInput {
   initialDate: string;
   endDate: string;
   granularity: ValidGranularities;
@@ -11,11 +11,11 @@ interface FetchDetailsRecordsRawArgs {
 /**
  * Returns raw handling overview data from the backend, without converting it to chart options.
  */
-export async function fetchDetailsRecordsRaw({
+export async function fetchHandlingOverviewRecords({
   initialDate,
   endDate,
   granularity,
-}: FetchDetailsRecordsRawArgs): Promise<HandlingOverviewDataType> {
+}: FetchHandlingOverviewRecordsInput): Promise<HandlingOverviewDataType> {
   // Map the granularity to a valid backend query endpoint
   const queryMap: Record<ValidGranularities, ValidQueryKeys | ""> = {
     hourly: "",

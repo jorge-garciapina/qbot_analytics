@@ -1,11 +1,11 @@
 import { HandlingOverviewDataType } from "../../../types";
 import { ValidGranularities } from "../../../hooks";
-import { ChartContainer } from "../../../mui_configurations/styled_components/chart_sections/styled_chart_container";
 import { ChartMiddleSectionContainer } from "../../../mui_configurations/styled_components/chart_sections/styled_chart_middle_section";
 import { UpperSectionModal } from "./details_modal_upper_section/comp_upper_section_modal";
 import ReactECharts from "echarts-for-react";
 
 import { handlingOverviewDetailsOptions } from "../../charts/handling_overview/handling_overview_details_options";
+import { StyledDetailsModalContainer } from "./styled_details_modal_container";
 
 interface DetailsModalInput {
   backendData: HandlingOverviewDataType | undefined;
@@ -39,7 +39,7 @@ export const DetailsModal: React.FC<DetailsModalInput> = ({
   const { title: optionsTitle, ...chartOptions } = options;
 
   return (
-    <ChartContainer>
+    <StyledDetailsModalContainer>
       <UpperSectionModal
         title={optionsTitle.text}
         initialDateModifier={initialDateModifier}
@@ -54,6 +54,6 @@ export const DetailsModal: React.FC<DetailsModalInput> = ({
           style={{ height: 400, width: "100%" }}
         />
       </ChartMiddleSectionContainer>
-    </ChartContainer>
+    </StyledDetailsModalContainer>
   );
 };

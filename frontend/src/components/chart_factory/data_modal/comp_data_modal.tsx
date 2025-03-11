@@ -1,4 +1,3 @@
-import { ChartContainer } from "../../../mui_configurations/styled_components/chart_sections/styled_chart_container";
 import { ChartMiddleSectionContainer } from "../../../mui_configurations/styled_components/chart_sections/styled_chart_middle_section";
 import { UpperSectionDataModal } from "./data_modal_upper_section/comp_upper_section_modal";
 // import ReactECharts from "echarts-for-react";
@@ -6,6 +5,8 @@ import { ValidGranularities } from "../../../hooks";
 
 import { HandlingOverviewDataType } from "../../../types";
 import DataTable from "./table/comp_data_table";
+
+import { StyledDataModalContainer } from "./styled_data_modal_container";
 
 interface DataModalInput {
   backendData: HandlingOverviewDataType | undefined;
@@ -24,9 +25,8 @@ export const DataModal: React.FC<DataModalInput> = ({
   endDateModifier,
   granularityModifier,
 }) => {
-  console.log("BACKEND DATA: ", backendData);
   return (
-    <ChartContainer>
+    <StyledDataModalContainer>
       <UpperSectionDataModal
         title={"DATA MODAL"}
         // title={title.text}
@@ -37,14 +37,8 @@ export const DataModal: React.FC<DataModalInput> = ({
         endDate={endDate}
       />
       <ChartMiddleSectionContainer>
-        {/* FIXME: In this place I have to put an entry-point to the table object (pending...) */}
-        {/* <ReactECharts
-          option={chartOptions}
-          style={{ height: 400, width: "100%" }}
-        /> */}
+        <DataTable backendData={backendData} />
       </ChartMiddleSectionContainer>
-
-      <DataTable backendData={backendData}/>
-    </ChartContainer>
+    </StyledDataModalContainer>
   );
 };

@@ -1,7 +1,6 @@
 import { DataModal } from "../../chart_factory/data_modal/comp_data_modal";
 import { useClinicData } from "../../../hooks";
-import { useGranularityLogic } from "./hook_use_granularity_logic";
-import { useHandlingOverviewRecords } from "../../../hooks/fetch_data_hooks/handling_overview/hook_handling_overview_records";
+import { useHandlingOverviewRecords, useGranularity } from "./../../../hooks";
 export function HandlingOverviewDataModal() {
   const { initialDate, endDate } = useClinicData();
 
@@ -13,7 +12,7 @@ export function HandlingOverviewDataModal() {
     endDate: adjustedEndDate,
     initialDateModifier,
     endDateModifier,
-  } = useGranularityLogic(initialDate, endDate);
+  } = useGranularity(initialDate, endDate);
 
   const { isPending, rawData } = useHandlingOverviewRecords({
     granularity,

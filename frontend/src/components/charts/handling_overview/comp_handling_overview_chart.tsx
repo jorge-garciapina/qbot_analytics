@@ -1,19 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { useLoginData } from "../../../hooks/fetch_data_hooks/hook_use_login_data";
 import { useTranslation } from "react-i18next";
-import {
-  generateHandlingOverviewChartData,
-  generateHandlingOverviewOptions,
-  generateHandlingOverviewTotals,
-} from "../../../utils/data/charts";
-
+import { generateHandlingOverviewTotals } from "./utils_handling_overview_totals";
 import { ChartModalContainer } from "../../modals/comp_modal_container";
 import { HandlingOverviewDetailsModal } from "./comp_handling_overview_details_modal";
 import { HandlingOverviewDataModal } from "./comp_handling_overview_data_modal";
 import { DashboardChart } from "../../chart_factory/chart_dashboard/comp_chart_dahboard";
 import { DashboardChartInput } from "../../../types/data_types";
 import { ModalNames } from "../../modals/comp_modal_container";
+import { useHandlingOverviewRecords } from "./backend_communication/hook_handling_overview_records";
 
+import { handlingOverviewDetailsOptions } from "./handling_overview_details_options";
 // Main Component
 const HandlingOverviewChart: React.FC<DashboardChartInput> = ({
   initialDate,
@@ -25,10 +21,18 @@ const HandlingOverviewChart: React.FC<DashboardChartInput> = ({
   const xAxisName = t("chartInformation.handlingOverviewChart.xAxisName");
   const yAxisName = t("chartInformation.handlingOverviewChart.yAxisName");
 
-  const { isPending, error, fetchedData, refetch } = useLoginData({
-    queryKey: "login",
-    initialDate,
-    endDate,
+  const { isPending, handlingOverviewData, refetch } =
+    useHandlingOverviewRecords({
+      granularity: "daily",
+      initialDate: initialDate,
+      endDate: endDate,
+    });
+
+  const options = handlingOverviewDetailsOptions({
+    fetchedData: handlingOverviewData || undefined,
+    xAxisName,
+    yAxisName,
+    title,
   });
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -56,30 +60,11 @@ const HandlingOverviewChart: React.FC<DashboardChartInput> = ({
 
   // Handle loading and errors
   if (isPending) return "Loading...";
-  if (error) return "An error has occurred: " + error.message;
 
   // ------------------------GENERATE CHART CONFIGURATION-----------------------
-  if (fetchedData) {
-    const seriesData = generateHandlingOverviewChartData({
-      fetchedData,
-      callsHandledByAIName: t(
-        "chartInformation.handlingOverviewChart.handledByAI"
-      ),
-      callsHandledByHumanName: t(
-        "chartInformation.handlingOverviewChart.handledByHuman"
-      ),
-    });
-
-    const chartOptions = generateHandlingOverviewOptions({
-      fetchedData,
-      title,
-      xAxisName,
-      seriesData,
-      yAxisName,
-    });
-
+  if (handlingOverviewData) {
     const handlingOverviewTotals = generateHandlingOverviewTotals({
-      fetchedData,
+      handlingOverviewData: handlingOverviewData,
       totalName: t(
         "chartInformation.handlingOverviewChart.footerSummaryInTimeInterval.total"
       ),
@@ -110,7 +95,7 @@ const HandlingOverviewChart: React.FC<DashboardChartInput> = ({
 
         {/* Main Chart */}
         <DashboardChart
-          options={chartOptions}
+          options={options}
           footerSummaryInTimeInterval={handlingOverviewTotals}
           openModal={(selectedModal: ModalNames) => {
             // The logic to control which modal will open is created inside the <DashboardChart/> component,

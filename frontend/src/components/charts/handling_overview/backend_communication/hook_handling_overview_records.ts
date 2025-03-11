@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
-import { fetchDetailsRecordsRaw } from "../../../components/charts/handling_overview/utils_fetch_details_records_raw";
-import { ValidGranularities } from "../../date_hooks/hook_use_date_granularity";
-import { HandlingOverviewDataType } from "../../../types";
+import { fetchHandlingOverviewRecords } from "./utils_fetch_handling_overview_records";
+import { ValidGranularities } from "../../../../hooks/date_hooks/hook_use_date_granularity";
+import { HandlingOverviewDataType } from "../../../../types";
 
 type UseDetailsDataInput = {
   granularity: ValidGranularities;
@@ -17,12 +17,12 @@ export function useHandlingOverviewRecords({
   const {
     isLoading,
     error,
-    data: rawData,
+    data: handlingOverviewData,
     refetch,
   } = useQuery<HandlingOverviewDataType>({
     queryKey: [initialDate, endDate, granularity],
     queryFn: () =>
-      fetchDetailsRecordsRaw({
+      fetchHandlingOverviewRecords({
         initialDate,
         endDate,
         granularity,
@@ -35,7 +35,7 @@ export function useHandlingOverviewRecords({
   return {
     isPending: isLoading,
     error,
-    rawData,
+    handlingOverviewData,
     refetch,
   };
 }

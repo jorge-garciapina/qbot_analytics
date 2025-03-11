@@ -1,4 +1,4 @@
-import { ChartContainer } from "../../../mui_configurations/styled_components/chart_sections/styled_chart_container";
+import { StyledChartDashboardContainer } from "./styled_chart_dashboard_container";
 import { UpperSectionDashboardChart } from "./upper_section/comp_upper_section_dashboard";
 import { BottomSection } from "./bottom_section/comp_bottom_section";
 import { ChartMiddleSectionContainer } from "../../../mui_configurations/styled_components/chart_sections/styled_chart_middle_section";
@@ -31,7 +31,7 @@ export const DashboardChart: React.FC<DashboardChartProps> = ({
   ];
 
   return (
-    <ChartContainer>
+    <StyledChartDashboardContainer>
       <UpperSectionDashboardChart title={title.text} openModal={openModal} />
       <ChartMiddleSectionContainer>
         <ReactECharts
@@ -40,6 +40,6 @@ export const DashboardChart: React.FC<DashboardChartProps> = ({
         />
       </ChartMiddleSectionContainer>
       <BottomSection footerSummaryInTimeInterval={totalsDummy} />
-    </ChartContainer>
+    </StyledChartDashboardContainer>
   );
 };

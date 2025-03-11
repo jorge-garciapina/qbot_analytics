@@ -1,8 +1,7 @@
 import React from "react";
 import { DetailsModal } from "../../chart_factory/details_modal/comp_details_modal";
 import { useClinicData } from "../../../hooks";
-import { useHandlingOverviewRecords } from "../../../hooks/fetch_data_hooks/handling_overview/hook_handling_overview_records";
-import { useGranularityLogic } from "./hook_use_granularity_logic";
+import { useHandlingOverviewRecords, useGranularity } from "../../../hooks";
 
 interface HandlingOverviewDetailsInput {
   title: string;
@@ -24,7 +23,7 @@ export const HandlingOverviewDetailsModal: React.FC<
     granularityModifier,
     initialDateModifier,
     endDateModifier,
-  } = useGranularityLogic(initialDate, endDate);
+  } = useGranularity(initialDate, endDate);
 
   // 3) Fetch the raw data from the backend
   const { isPending, rawData } = useHandlingOverviewRecords({

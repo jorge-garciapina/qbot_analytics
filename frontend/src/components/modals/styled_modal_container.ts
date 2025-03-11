@@ -1,6 +1,6 @@
 import { Modal, styled } from "@mui/material";
 
-export const ModalContainer = styled(Modal)(({ theme }) => ({
+export const StyledModalContainer = styled(Modal)(({ theme }) => ({
   backgroundColor: "pink",
   flexDirection: "column",
   borderColor: theme.palette.secondary.dark,

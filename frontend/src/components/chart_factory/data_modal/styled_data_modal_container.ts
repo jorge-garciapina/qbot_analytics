@@ -1,5 +1,5 @@
 import { Container, styled } from "@mui/material";
-export const ChartContainer = styled(Container)(({ theme }) => ({
+export const StyledDataModalContainer = styled(Container)(({ theme }) => ({
   backgroundColor: "yellow",
   borderColor: theme.palette.secondary.dark,
   borderWidth: "5px",
