@@ -1,6 +1,6 @@
 import { ModalChartUpperSectionContainer } from "../../../../mui_configurations/styled_components/chart_sections/upper_section/styled_modal_chart_upper_container";
-import { ActionToolbar } from "./comp_action_toolbar_modal";
-import { ModalHeader } from "./comp_header";
+import { DateSelectors } from "../../partials/date_selectors/comp_date_selectors";
+import { ChartHeader } from "../../partials/chart_header/comp_chart_header";
 
 import { ValidGranularities } from "../../../../hooks";
 
@@ -23,8 +23,8 @@ export const UpperSectionModal: React.FC<UpperSectionInput> = ({
 }) => {
   return (
     <ModalChartUpperSectionContainer>
-      <ModalHeader title={title} />
-      <ActionToolbar
+      <ChartHeader title={title} />
+      <DateSelectors
         initialDateModifier={initialDateModifier}
         endDateModifier={endDateModifier}
         granularityModifier={granularityModifier}

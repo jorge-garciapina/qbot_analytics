@@ -4,7 +4,7 @@ interface Input {
   title: string;
 }
 
-export const ModalHeader: React.FC<Input> = ({ title }) => {
+export const ChartHeader: React.FC<Input> = ({ title }) => {
   return (
     <>
       <Typography variant="modalChartTitle">{title}</Typography>

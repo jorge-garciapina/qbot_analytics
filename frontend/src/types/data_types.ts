@@ -104,7 +104,3 @@ export interface UpperSectionInput {
   title: string;
   openModal: () => void;
 }
-
-export interface ActionToolbarInput {
-  openModal: () => void;
-}

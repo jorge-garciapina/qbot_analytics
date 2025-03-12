@@ -1,8 +1,8 @@
-import { ChartTitleContainer } from "../../../../mui_configurations/styled_components/typography/styled_chart_title";
+import { ChartTitleContainer } from "./styled_chart_title";
 import { TitleStyledContainer } from "../../../../mui_configurations/styled_components/chart_sections/upper_section/styled_title_container";
 
 import { InfoOutlined } from "@mui/icons-material";
-import { IconButtonChart } from "./comp_icon_button";
+import { IconButtonChart } from "../../partials/icon_button/comp_icon_button";
 import { useTranslation } from "react-i18next";
 
 interface TitleContainerInput {

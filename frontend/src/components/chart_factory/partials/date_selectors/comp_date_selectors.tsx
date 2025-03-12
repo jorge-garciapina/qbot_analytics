@@ -1,5 +1,4 @@
-import { ActionToolbarDashboardChartContainer } from "../../../../mui_configurations/styled_components/chart_sections/upper_section/styled_action_tool_bar_dashboard_chart";
-// import { DropDownMenuChart } from "../../../library/comp_drop_down_menu_chart";
+import { DateSelectorsDashboardChartContainer } from "./styled_date_selectors";
 import { DateRangeButtonChart } from "../../../library/buttons/comp_date_range_button_chart";
 import { DateRangeSelector } from "../../../date_related_components/comp_range_selector";
 import { ValidGranularities } from "../../../../hooks";
@@ -11,7 +10,7 @@ interface ActionToolbarInput {
   endDate: string;
 }
 // Example Usage
-export const ActionToolbar: React.FC<ActionToolbarInput> = ({
+export const DateSelectors: React.FC<ActionToolbarInput> = ({
   initialDateModifier,
   endDateModifier,
   granularityModifier,
@@ -19,8 +18,7 @@ export const ActionToolbar: React.FC<ActionToolbarInput> = ({
   endDate,
 }) => {
   return (
-    <ActionToolbarDashboardChartContainer>
-      {/* <DropDownMenuChart /> */}
+    <DateSelectorsDashboardChartContainer>
       <DateRangeButtonChart
         granularityModifier={granularityModifier}
         granularity={"daily"}
@@ -46,6 +44,6 @@ export const ActionToolbar: React.FC<ActionToolbarInput> = ({
         initialDate={initialDate}
         endDate={endDate}
       />
-    </ActionToolbarDashboardChartContainer>
+    </DateSelectorsDashboardChartContainer>
   );
 };

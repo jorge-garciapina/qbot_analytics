@@ -1,4 +1,4 @@
-import { ChartMiddleSectionContainer } from "../../../mui_configurations/styled_components/chart_sections/styled_chart_middle_section";
+import { ChartMiddleSectionContainer } from "../partials/chart_container/styled_chart_container";
 import { UpperSectionDataModal } from "./data_modal_upper_section/comp_upper_section_modal";
 // import ReactECharts from "echarts-for-react";
 import { ValidGranularities } from "../../../hooks";
