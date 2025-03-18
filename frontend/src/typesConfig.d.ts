@@ -40,3 +40,16 @@ declare module "@mui/material/Typography" {
     modalChartText: true;
   }
 }
+
+import "@mui/material/styles";
+
+//TODO: THIS IS PROVISIONAL, WHEN MERGING THE CODE WITH EDMUNDO'S THIS SHOULD BE REMOVED
+declare module "@mui/material/styles" {
+  interface Palette {
+    test: PaletteColor;
+  }
+
+  interface PaletteOptions {
+    test?: PaletteColorOptions;
+  }
+}

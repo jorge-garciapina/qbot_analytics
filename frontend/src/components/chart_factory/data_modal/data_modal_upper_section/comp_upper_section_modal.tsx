@@ -1,8 +1,7 @@
-import { ModalChartUpperSectionContainer } from "../../../../mui_configurations/styled_components/chart_sections/upper_section/styled_modal_chart_upper_container";
-import { DateSelectors } from "../../partials/date_selectors/comp_date_selectors";
+import { ModalChartUpperSectionContainer } from "./styled_modal_chart_upper_container";
 
 import { ValidGranularities } from "../../../../hooks";
-import { ChartHeader } from "../../partials/chart_header/comp_chart_header";
+import { ChartHeader, DateSelectors } from "../../partials";
 
 interface UpperSectionDataInput {
   title: string;

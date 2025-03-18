@@ -1,11 +1,8 @@
-import { DashboardChartUpperSectionContainer } from "./styled_dashboard_chart_upper_container";
-import { TitleContainer } from "../../partials/chart_title_container/comp_title_container";
-
-import { ActionToolbar } from "../../partials/action_toolbar/comp_action_toolbar_dashboard";
-
+import { ActionToolbar, TitleContainer } from "../../partials/";
 import { ModalNames } from "../../../modals/comp_modal_container";
+import { Box, styled } from "@mui/material";
 
-export interface UpperSectionInput {
+interface UpperSectionInput {
   title: string;
   openModal: (selectedModal: ModalNames) => void;
 }
@@ -15,9 +12,17 @@ export const UpperSectionDashboardChart: React.FC<UpperSectionInput> = ({
   openModal,
 }) => {
   return (
-    <DashboardChartUpperSectionContainer>
+    <UpperSection>
       <TitleContainer title={title} />
       <ActionToolbar openModal={openModal} />
-    </DashboardChartUpperSectionContainer>
+    </UpperSection>
   );
 };
+
+// STYLED COMPONENT
+const UpperSection = styled(Box)(({ theme }) => ({
+  display: "flex", // Use flexbox for layout
+  justifyContent: "flex-start", // Space out the children
+  backgroundColor: theme.palette.test.main,
+  paddingTop: "5px",
+}));

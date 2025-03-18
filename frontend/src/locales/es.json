@@ -9,7 +9,7 @@
     "handlingOverviewChart": {
       "handledByAI": "Llamadas gestionadas por IA",
       "handledByHuman": "Llamadas redirigidas a un humano",
-      "chartTitle": "Atención de llamadas",
+      "chartTitle": "Resumen de gestión",
       "xAxisName": "Fecha",
       "yAxisName": "Número de llamadas/Porcentaje",
       "footerSummaryInTimeInterval": {

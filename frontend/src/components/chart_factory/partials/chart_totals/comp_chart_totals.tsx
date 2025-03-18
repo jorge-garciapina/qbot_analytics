@@ -1,6 +1,6 @@
-import { Typography } from "@mui/material";
-import { ChartTotalsContainer } from "./styled_chart_totals";
 import { TotalsViewer } from "./comp_totals_viewer";
+import { Box, styled } from "@mui/material";
+
 interface ChartTotal {
   name: string;
   value: number;
@@ -14,10 +14,14 @@ export const ChartTotals: React.FC<{
       <TotalsViewer key={index} name={element.name} value={element.value} />
     )
   );
-  return (
-    <ChartTotalsContainer>
-      <Typography variant="h3">Bottom</Typography>
-      {dynamicComponents}
-    </ChartTotalsContainer>
-  );
+  return <Totals>{dynamicComponents}</Totals>;
 };
+
+const Totals = styled(Box)(({ theme }) => ({
+  display: "flex",
+  flexDirection: "row",
+  justifyContent: "center",
+  backgroundColor: theme.palette.test.main,
+  borderColor: theme.palette.secondary.dark,
+  borderTop: "solid",
+}));

@@ -2,15 +2,17 @@ import React from "react";
 import { DetailsModal } from "../../chart_factory/details_modal/comp_details_modal";
 import { useClinicData } from "../../../hooks";
 import { useHandlingOverviewRecords, useGranularity } from "../../../hooks";
-import { FooterSummaryTotalsType } from "../../../types/data_types";
 
 import { generateHandlingOverviewTotals } from "./utils/utils_handling_overview_totals";
 
+interface ChartTotal {
+  name: string;
+  value: number;
+}
 interface HandlingOverviewDetailsInput {
   title: string;
-  xAxisName: string;
   yAxisName: string;
-  footerSummaryInTimeInterval: FooterSummaryTotalsType;
+  footerSummaryInTimeInterval: ChartTotal[];
   totalName: string;
   handledByAIName: string;
   handledByHumanName: string;
@@ -18,14 +20,7 @@ interface HandlingOverviewDetailsInput {
 
 export const HandlingOverviewDetailsModal: React.FC<
   HandlingOverviewDetailsInput
-> = ({
-  title,
-  xAxisName,
-  yAxisName,
-  totalName,
-  handledByAIName,
-  handledByHumanName,
-}) => {
+> = ({ title, yAxisName, totalName, handledByAIName, handledByHumanName }) => {
   // 1) Pull the initial and end dates from the global clinic data
   const { initialDate, endDate } = useClinicData();
 
@@ -59,7 +54,6 @@ export const HandlingOverviewDetailsModal: React.FC<
     <DetailsModal
       backendData={handlingOverviewData}
       title={title}
-      xAxisName={xAxisName}
       yAxisName={yAxisName}
       initialDate={adjustedInitialDate}
       endDate={adjustedEndDate}

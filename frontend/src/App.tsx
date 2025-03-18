@@ -6,6 +6,7 @@ import { mainTheme } from "./mui_configurations/themes/main_theme";
 import { I18nextProvider } from "react-i18next";
 import i18n from "./i18n";
 
+import { CssBaseline } from "@mui/material";
 const queryClient = new QueryClient();
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <I18nextProvider i18n={i18n}>
         <ThemeProvider theme={mainTheme}>
+          <CssBaseline />
           <DashboardCharts />
         </ThemeProvider>
       </I18nextProvider>

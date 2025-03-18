@@ -1,6 +1,3 @@
-import { ChartTitleContainer } from "./styled_chart_title";
-import { TitleStyledContainer } from "../../../../mui_configurations/styled_components/chart_sections/upper_section/styled_title_container";
-
 import { InfoOutlined } from "@mui/icons-material";
 import { IconButtonChart } from "../../partials/icon_button/comp_icon_button";
 import { useTranslation } from "react-i18next";
@@ -8,6 +5,25 @@ import { useTranslation } from "react-i18next";
 interface TitleContainerInput {
   title: string;
 }
+
+import { Box, styled } from "@mui/material";
+
+export const StyledTitleContainer = styled(Box)(({ theme }) => ({
+  flexGrow: 2,
+  display: "flex", // Use flexbox for layout
+  alignItems: "center", // Align items vertically in the center
+  backgroundColor: theme.palette.test.main,
+  borderWidth: "5px",
+  // border: "solid",
+  margin: "0",
+}));
+
+import { Typography } from "@mui/material";
+
+export const ChartTitleContainer = styled(Typography)(({ theme }) => ({
+  fontSize: "14px",
+  color: theme.palette.test.black,
+}));
 
 export const TitleContainer: React.FC<TitleContainerInput> = ({ title }) => {
   const { t } = useTranslation();
@@ -17,13 +33,13 @@ export const TitleContainer: React.FC<TitleContainerInput> = ({ title }) => {
   }
 
   return (
-    <TitleStyledContainer>
+    <StyledTitleContainer>
       <ChartTitleContainer>{title}</ChartTitleContainer>
       <IconButtonChart
         icon={<InfoOutlined />}
         tooltipTitle={t("chartInformation.buttons.info")}
         onClick={chartInfo}
       />
-    </TitleStyledContainer>
+    </StyledTitleContainer>
   );
 };

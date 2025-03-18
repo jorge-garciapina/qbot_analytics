@@ -3,7 +3,7 @@ import { UpperSectionDataModal } from "./data_modal_upper_section/comp_upper_sec
 // import ReactECharts from "echarts-for-react";
 import { ValidGranularities } from "../../../hooks";
 
-import { HandlingOverviewDataType } from "../../../types";
+import { HandlingOverviewDataType } from "../../charts/handling_overview/types/types_handling_overview";
 import DataTable from "./table/comp_data_table";
 
 import { StyledDataModalContainer } from "./styled_data_modal_container";

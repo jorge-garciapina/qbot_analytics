@@ -8,7 +8,7 @@ import {
   TableRow,
   Paper,
 } from "@mui/material";
-import { HandlingOverviewDataType } from "../../../../types";
+import { HandlingOverviewDataType } from "../../../charts/handling_overview/types/types_handling_overview";
 
 interface TableInput {
   backendData: HandlingOverviewDataType | undefined;

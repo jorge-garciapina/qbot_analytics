@@ -1,7 +1,6 @@
 // CUSTOM COMPONENTS IMPORTS
-import { ActionToolbarDashboardChartContainer } from "./styled_action_toolbar_dashboard_chart";
-import { DropDownMenuChart } from "../drop_down_menu_chart/comp_drop_down_menu_chart";
-import { IconButtonChart } from "../icon_button/comp_icon_button";
+import { DropDownMenuChart } from "../";
+import { IconButtonChart } from "../";
 
 // TRANSLATION IMPORTS
 import { useTranslation } from "react-i18next";
@@ -13,12 +12,13 @@ interface ActionToolbarInput {
 }
 
 import { OpenInNew, Search } from "@mui/icons-material";
+import { Box, styled } from "@mui/material";
 
 export const ActionToolbar: React.FC<ActionToolbarInput> = ({ openModal }) => {
   const { t } = useTranslation();
 
   return (
-    <ActionToolbarDashboardChartContainer>
+    <ActionToolbarStyles>
       <DropDownMenuChart />
       <IconButtonChart
         icon={<OpenInNew />}
@@ -35,6 +35,17 @@ export const ActionToolbar: React.FC<ActionToolbarInput> = ({ openModal }) => {
           openModal("data_modal");
         }}
       />
-    </ActionToolbarDashboardChartContainer>
+    </ActionToolbarStyles>
   );
 };
+
+const ActionToolbarStyles = styled(Box)(({ theme }) => ({
+  display: "flex",
+  flexGrow: 1,
+  alignItems: "center", // Corrected camelCase for align-items
+  justifyContent: "flex-end", // Corrected camelCase and added quotes for flex-end
+  backgroundColor: theme.palette.test.main,
+  borderWidth: "5px",
+  gap: "14px",
+  // border: "solid",
+}));

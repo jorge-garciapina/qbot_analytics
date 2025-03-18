@@ -5,19 +5,20 @@ import ReactECharts from "echarts-for-react";
 
 import { handlingOverviewDetailsOptions } from "../../charts/handling_overview/utils/handling_overview_details_options";
 import { StyledDetailsModalContainer } from "./styled_details_modal_container";
-import { FooterSummaryTotalsType } from "../../../types/data_types";
-import { ChartTotals } from "../partials/chart_totals/comp_chart_totals";
 
-import { ChartContainer } from "../partials/chart_container/comp_chart_container";
+import { ChartContainer, ChartTotals } from "../partials";
+interface ChartTotal {
+  name: string;
+  value: number;
+}
 
 interface DetailsModalInput {
   backendData: HandlingOverviewDataType | undefined;
   title: string;
-  xAxisName: string;
   yAxisName: string;
   initialDate: string;
   endDate: string;
-  footerSummaryInTimeInterval: FooterSummaryTotalsType;
+  footerSummaryInTimeInterval: ChartTotal[];
   initialDateModifier: (date: string) => void;
   endDateModifier: (date: string) => void;
   granularityModifier: (newGranularity: ValidGranularities) => void;
@@ -28,7 +29,6 @@ export const DetailsModal: React.FC<DetailsModalInput> = ({
   initialDate,
   endDate,
   title,
-  xAxisName,
   yAxisName,
   footerSummaryInTimeInterval,
   initialDateModifier,
@@ -37,7 +37,6 @@ export const DetailsModal: React.FC<DetailsModalInput> = ({
 }) => {
   const options = handlingOverviewDetailsOptions({
     fetchedData: backendData || undefined,
-    xAxisName,
     yAxisName,
     title,
   });

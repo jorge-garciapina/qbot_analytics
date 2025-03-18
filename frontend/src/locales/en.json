@@ -9,7 +9,7 @@
     "handlingOverviewChart": {
       "handledByAI": "Calls handled by AI",
       "handledByHuman": "Calls redirected to human",
-      "chartTitle": "Call Handling",
+      "chartTitle": "Handling Overview",
       "xAxisName": "Date",
       "yAxisName": "Number of calls/Percentage",
       "footerSummaryInTimeInterval": {

@@ -1,6 +1,9 @@
-import { FooterSummaryTotalsType } from "../../../../types/data_types";
 import { HandlingOverviewDataType } from "../types/types_handling_overview";
 
+interface ChartTotal {
+  name: string;
+  value: number;
+}
 interface HandlingOverviewTotalsInput {
   handlingOverviewData: HandlingOverviewDataType; // New input type
   totalName: string;
@@ -27,7 +30,7 @@ export function generateHandlingOverviewTotals({
   totalName,
   handledByAIName,
   handledByHumanName,
-}: HandlingOverviewTotalsInput): FooterSummaryTotalsType {
+}: HandlingOverviewTotalsInput): ChartTotal[] {
   // Compute totals by summing the respective arrays
   const totalHandledByAI = sumArray(handlingOverviewData.callsHandledByAI);
   const totalHandledByHuman = sumArray(
@@ -36,7 +39,7 @@ export function generateHandlingOverviewTotals({
   const totalHandled = totalHandledByAI + totalHandledByHuman;
 
   // Construct the output in the expected format
-  const handlingOverviewTotals: FooterSummaryTotalsType = [
+  const handlingOverviewTotals: ChartTotal[] = [
     {
       name: totalName,
       value: totalHandled,

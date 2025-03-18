@@ -1,11 +1,5 @@
-//TODO: THE VARIANTS MUST BE DEFINED ON THE typesConfig.d.ts FILE
+// TODO: I need to learn about the roles of the vite-env.d.ts and the typesConfig.d.ts
 
-// IN ORDER TO USE THIS, INSTALL:
-// npm install @fontsource/roboto
-import "@fontsource/roboto/300.css";
-import "@fontsource/roboto/400.css";
-import "@fontsource/roboto/500.css";
-import "@fontsource/roboto/700.css";
 import { lime, purple } from "@mui/material/colors";
 // import { lime, purple, green, orange } from "@mui/material/colors";
 
@@ -24,10 +18,19 @@ export const mainTheme = createTheme({
       light: purple[300],
       dark: purple[700],
     },
+    //TODO: THIS IS PROVISIONAL, WHEN MERGING THE CODE WITH EDMUNDO'S THIS SHOULD BE REMOVED
+    test: {
+      main: "rgb(255,255,255)",
+      light: "rgb(127,139,155)",
+      dark: "rgb(48,63,84)",
+      icon: "rgb(189,197,207)",
+      black: "rgb(0,0,0)",
+      chartBorder: "rgb(233,238,245)",
+    },
   },
 
   typography: {
-    fontFamily: "'Roboto', 'Arial', sans-serif",
+    fontFamily: "'Instrument Sans', 'Roboto', 'Arial', sans-serif",
     // In order to include variants, fo to the typesConfig.d.ts file and include them
     modalChartTitle: {
       fontSize: "2.5rem",

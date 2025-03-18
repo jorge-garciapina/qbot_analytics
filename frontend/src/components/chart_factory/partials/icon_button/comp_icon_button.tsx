@@ -1,6 +1,15 @@
 import React from "react";
-import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
+import { IconButton, styled } from "@mui/material";
+
+const Icon = styled(IconButton)(({ theme }) => ({
+  //   backgroundColor: theme.palette.test.icon,
+  color: theme.palette.test.icon,
+  width: "14px",
+  height: "14px",
+  marginLeft: "6px",
+  // border: "solid",
+}));
 
 interface IconButtonChartProps {
   icon: React.ReactNode; // Accepts any React node as the icon
@@ -15,9 +24,9 @@ export const IconButtonChart: React.FC<IconButtonChartProps> = ({
 }) => {
   return (
     <Tooltip title={tooltipTitle}>
-      <IconButton color="primary" onClick={onClick}>
+      <Icon color="primary" onClick={onClick}>
         {icon}
-      </IconButton>
+      </Icon>
     </Tooltip>
   );
 };
