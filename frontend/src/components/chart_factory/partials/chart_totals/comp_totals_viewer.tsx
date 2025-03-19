@@ -14,24 +14,24 @@ export const TotalsViewer: React.FC<TotalsViewerInput> = ({ name, value }) => {
 };
 
 // STYLED COMPONENTS:
-const Totals = styled(Box)(({ theme }) => ({
+const Totals = styled(Box)(() => ({
   flexGrow: 1,
   // backgroundColor: "red",
-  backgroundColor: theme.palette.test.main,
+  backgroundColor: "rgb(255,0,0)",
   display: "flex",
   flexDirection: "row",
   justifyContent: "center",
   paddingBottom: "16px",
 }));
 
-const Name = styled(Typography)(({ theme }) => ({
-  color: theme.palette.test.light,
+const Name = styled(Typography)(() => ({
+  color: "rgb(255,0,0)",
   fontSize: 12,
   fontWeight: 500,
 }));
 
-const Value = styled(Typography)(({ theme }) => ({
-  color: theme.palette.test.dark,
+const Value = styled(Typography)(() => ({
+  color: "rgb(255,0,0)",
   fontSize: 12,
   fontWeight: 500,
 }));

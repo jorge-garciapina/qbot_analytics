@@ -1,13 +1,13 @@
 import { IconButton, styled } from "@mui/material";
 
-export const CloseModalButton = styled(IconButton)(({ theme }) => ({
+export const CloseModalButton = styled(IconButton)(() => ({
   position: "absolute",
   top: "8px",
   right: "8px",
-  backgroundColor: theme.palette.primary.dark,
+  backgroundColor: "rgb(255,0,0)",
   borderRadius: "50%",
   transition: "background-color 0.3s ease-in-out",
   "&:hover": {
-    backgroundColor: theme.palette.primary.light,
+    backgroundColor: "rgb(255,0,0)",
   },
 }));

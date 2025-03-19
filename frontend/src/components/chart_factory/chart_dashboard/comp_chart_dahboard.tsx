@@ -47,11 +47,11 @@ export const DashboardChart: React.FC<DashboardChartProps> = ({
 };
 
 // STYLED COMPONENT
-export const Chart = styled(Box)(({ theme }) => ({
-  backgroundColor: theme.palette.test.main,
+export const Chart = styled(Box)(() => ({
+  backgroundColor: "rgb(255,255,255)",
   borderWidth: "5px",
   border: "solid",
-  borderColor: theme.palette.test.chartBorder,
+  borderColor: "rgb(233,238,245)",
   borderRadius: "12px",
   padding: "3px 12px 0px 19px",
   width: "586px",

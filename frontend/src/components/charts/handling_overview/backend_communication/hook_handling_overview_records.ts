@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { fetchHandlingOverviewRecords } from "./utils_fetch_handling_overview_records";
-import { ValidGranularities } from "../../../../hooks/date_hooks/hook_use_date_granularity";
-import { HandlingOverviewDataType } from "../../../../types";
+import { ValidGranularities } from "../../../../common/types";
+import { HandlingOverviewDataType } from "../types/types_handling_overview";
 
 type UseDetailsDataInput = {
   granularity: ValidGranularities;

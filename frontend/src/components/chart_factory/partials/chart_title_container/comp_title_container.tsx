@@ -8,11 +8,11 @@ interface TitleContainerInput {
 
 import { Box, styled } from "@mui/material";
 
-export const StyledTitleContainer = styled(Box)(({ theme }) => ({
+export const StyledTitleContainer = styled(Box)(() => ({
   flexGrow: 2,
   display: "flex", // Use flexbox for layout
   alignItems: "center", // Align items vertically in the center
-  backgroundColor: theme.palette.test.main,
+  backgroundColor: "rgb(255,0,0)",
   borderWidth: "5px",
   // border: "solid",
   margin: "0",
@@ -20,9 +20,9 @@ export const StyledTitleContainer = styled(Box)(({ theme }) => ({
 
 import { Typography } from "@mui/material";
 
-export const ChartTitleContainer = styled(Typography)(({ theme }) => ({
+export const ChartTitleContainer = styled(Typography)(() => ({
   fontSize: "14px",
-  color: theme.palette.test.black,
+  color: "rgb(255,0,0)",
 }));
 
 export const TitleContainer: React.FC<TitleContainerInput> = ({ title }) => {

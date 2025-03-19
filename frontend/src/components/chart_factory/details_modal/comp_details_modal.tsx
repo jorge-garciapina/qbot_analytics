@@ -1,5 +1,5 @@
 import { HandlingOverviewDataType } from "../../charts/handling_overview/types/types_handling_overview";
-import { ValidGranularities } from "../../../hooks";
+import { ValidGranularities } from "../../../common/types";
 import { UpperSectionModal } from "./details_modal_upper_section/comp_upper_section_modal";
 import ReactECharts from "echarts-for-react";
 

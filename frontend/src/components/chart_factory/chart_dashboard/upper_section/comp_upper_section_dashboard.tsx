@@ -20,9 +20,9 @@ export const UpperSectionDashboardChart: React.FC<UpperSectionInput> = ({
 };
 
 // STYLED COMPONENT
-const UpperSection = styled(Box)(({ theme }) => ({
+const UpperSection = styled(Box)(() => ({
   display: "flex", // Use flexbox for layout
   justifyContent: "flex-start", // Space out the children
-  backgroundColor: theme.palette.test.main,
+  backgroundColor: "rgb(255,255,255)",
   paddingTop: "5px",
 }));

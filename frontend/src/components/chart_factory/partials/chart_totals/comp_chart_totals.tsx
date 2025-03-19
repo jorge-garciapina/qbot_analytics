@@ -17,11 +17,11 @@ export const ChartTotals: React.FC<{
   return <Totals>{dynamicComponents}</Totals>;
 };
 
-const Totals = styled(Box)(({ theme }) => ({
+const Totals = styled(Box)(() => ({
   display: "flex",
   flexDirection: "row",
   justifyContent: "center",
-  backgroundColor: theme.palette.test.main,
-  borderColor: theme.palette.secondary.dark,
+  backgroundColor: "rgb(255,0,0)",
+  borderColor: "rgb(255,0,0)",
   borderTop: "solid",
 }));

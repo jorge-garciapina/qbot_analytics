@@ -1,7 +1,7 @@
 import { ModalChartUpperSectionContainer } from "../../data_modal/data_modal_upper_section/styled_modal_chart_upper_container";
 import { ChartHeader, DateSelectors } from "../../partials";
 
-import { ValidGranularities } from "../../../../hooks";
+import { ValidGranularities } from "../../../../common/types";
 
 interface UpperSectionInput {
   title: string;

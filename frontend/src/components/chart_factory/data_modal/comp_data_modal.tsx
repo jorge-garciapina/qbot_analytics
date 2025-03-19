@@ -1,7 +1,7 @@
 import { ChartMiddleSectionContainer } from "../partials/chart_container/styled_chart_container";
 import { UpperSectionDataModal } from "./data_modal_upper_section/comp_upper_section_modal";
 // import ReactECharts from "echarts-for-react";
-import { ValidGranularities } from "../../../hooks";
+import { ValidGranularities } from "../../../common/types";
 
 import { HandlingOverviewDataType } from "../../charts/handling_overview/types/types_handling_overview";
 import DataTable from "./table/comp_data_table";

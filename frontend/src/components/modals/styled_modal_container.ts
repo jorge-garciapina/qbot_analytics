@@ -1,9 +1,9 @@
 import { Modal, styled } from "@mui/material";
 
-export const StyledModalContainer = styled(Modal)(({ theme }) => ({
+export const StyledModalContainer = styled(Modal)(() => ({
   backgroundColor: "pink",
   flexDirection: "column",
-  borderColor: theme.palette.secondary.dark,
+  borderColor: "rgb(255,0,0)",
   borderWidth: "5px",
   border: "solid",
   position: "fixed",

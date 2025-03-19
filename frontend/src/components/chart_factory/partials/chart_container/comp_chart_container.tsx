@@ -15,12 +15,7 @@ export const ChartContainer: React.FC<ChartContainerProps> = ({ children }) => {
   return <ChartHolder>{children}</ChartHolder>;
 };
 
-export const ChartHolder = styled(Box)(({ theme }) => ({
-  // backgroundColor: "cadetblue",
-  backgroundColor: theme.palette.test.main,
-  borderColor: theme.palette.secondary.dark,
-
-  // borderWidth: "5px",
-  // border: "solid",
-  // height: "150px",
+export const ChartHolder = styled(Box)(() => ({
+  backgroundColor: "rgb(255,0,0)",
+  borderColor: "rgb(255,0,0)",
 }));

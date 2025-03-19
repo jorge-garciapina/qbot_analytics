@@ -1,6 +1,6 @@
 import { DataModal } from "../../chart_factory/data_modal/comp_data_modal";
-import { useClinicData } from "../../../hooks";
-import { useHandlingOverviewRecords, useGranularity } from "./../../../hooks";
+import { useClinicData, useGranularity } from "../../../hooks";
+import { useHandlingOverviewRecords } from "./backend_communication/hook_handling_overview_records";
 export function HandlingOverviewDataModal() {
   const { initialDate, endDate } = useClinicData();
 

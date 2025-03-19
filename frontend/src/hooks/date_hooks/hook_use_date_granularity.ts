@@ -1,12 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDate } from "..";
-
-export type ValidGranularities =
-  | "hourly"
-  | "daily"
-  | "weekly"
-  | "monthly"
-  | "yearly";
+import { ValidGranularities } from "../../common/types";
 
 interface UseGranularityOutput {
   granularity: ValidGranularities;

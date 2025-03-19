@@ -1,7 +1,7 @@
 import React from "react";
 import { DetailsModal } from "../../chart_factory/details_modal/comp_details_modal";
-import { useClinicData } from "../../../hooks";
-import { useHandlingOverviewRecords, useGranularity } from "../../../hooks";
+import { useClinicData, useGranularity } from "../../../hooks";
+import { useHandlingOverviewRecords } from "./backend_communication/hook_handling_overview_records";
 
 import { generateHandlingOverviewTotals } from "./utils/utils_handling_overview_totals";
 
@@ -43,24 +43,26 @@ export const HandlingOverviewDetailsModal: React.FC<
 
   if (isPending) return "Loading...";
 
-  const handlingOverviewTotals = generateHandlingOverviewTotals({
-    handlingOverviewData: handlingOverviewData,
-    totalName: totalName,
-    handledByAIName: handledByAIName,
-    handledByHumanName: handledByHumanName,
-  });
+  if (handlingOverviewData) {
+    const handlingOverviewTotals = generateHandlingOverviewTotals({
+      handlingOverviewData: handlingOverviewData,
+      totalName: totalName,
+      handledByAIName: handledByAIName,
+      handledByHumanName: handledByHumanName,
+    });
 
-  return (
-    <DetailsModal
-      backendData={handlingOverviewData}
-      title={title}
-      yAxisName={yAxisName}
-      initialDate={adjustedInitialDate}
-      endDate={adjustedEndDate}
-      footerSummaryInTimeInterval={handlingOverviewTotals}
-      granularityModifier={granularityModifier}
-      endDateModifier={endDateModifier}
-      initialDateModifier={initialDateModifier}
-    />
-  );
+    return (
+      <DetailsModal
+        backendData={handlingOverviewData}
+        title={title}
+        yAxisName={yAxisName}
+        initialDate={adjustedInitialDate}
+        endDate={adjustedEndDate}
+        footerSummaryInTimeInterval={handlingOverviewTotals}
+        granularityModifier={granularityModifier}
+        endDateModifier={endDateModifier}
+        initialDateModifier={initialDateModifier}
+      />
+    );
+  }
 };

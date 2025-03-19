@@ -1,7 +1,7 @@
 import { DateSelectorsDashboardChartContainer } from "./styled_date_selectors";
 import { DateRangeButtonChart } from "../../../library/buttons/comp_date_range_button_chart";
 import { DateRangeSelector } from "../../../date_related_components/comp_range_selector";
-import { ValidGranularities } from "../../../../hooks";
+import { ValidGranularities } from "../../../../common/types";
 interface ActionToolbarInput {
   initialDateModifier: (date: string) => void;
   endDateModifier: (date: string) => void;

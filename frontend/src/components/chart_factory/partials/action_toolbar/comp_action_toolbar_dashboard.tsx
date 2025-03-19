@@ -39,12 +39,12 @@ export const ActionToolbar: React.FC<ActionToolbarInput> = ({ openModal }) => {
   );
 };
 
-const ActionToolbarStyles = styled(Box)(({ theme }) => ({
+const ActionToolbarStyles = styled(Box)(() => ({
   display: "flex",
   flexGrow: 1,
   alignItems: "center", // Corrected camelCase for align-items
   justifyContent: "flex-end", // Corrected camelCase and added quotes for flex-end
-  backgroundColor: theme.palette.test.main,
+  backgroundColor: "rgb(255,255,255)",
   borderWidth: "5px",
   gap: "14px",
   // border: "solid",

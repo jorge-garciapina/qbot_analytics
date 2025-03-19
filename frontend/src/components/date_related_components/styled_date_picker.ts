@@ -1,10 +1,10 @@
 import { styled } from "@mui/material";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 
-export const StyledDatePicker = styled(DatePicker)(({ theme }) => ({
+export const StyledDatePicker = styled(DatePicker)(() => ({
   backgroundColor: "pink",
   //   flexDirection: "column",
-  borderColor: theme.palette.secondary.dark,
+  borderColor: "rgb(255,0,0)",
   //   borderWidth: "5px",
   //   border: "solid",
   //   position: "fixed",

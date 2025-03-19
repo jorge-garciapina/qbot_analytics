@@ -1,12 +1,16 @@
-import { ValidGranularities } from "../../../../hooks";
-import { HandlingOverviewDataType } from "../../../../types";
-import { ValidQueryKeys } from "../../../../types";
+import { ValidGranularities } from "../../../../common/types";
+import { HandlingOverviewDataType } from "../types/types_handling_overview";
 
 interface FetchHandlingOverviewRecordsInput {
   initialDate: string;
   endDate: string;
   granularity: ValidGranularities;
 }
+
+type ValidQueryKeys =
+  | "yearly_data_in_date_range"
+  | "monthly_data_in_date_range"
+  | "daily_data_in_date_range";
 
 /**
  * Returns raw handling overview data from the backend, without converting it to chart options.

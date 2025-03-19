@@ -1,5 +1,14 @@
-import { DateRangeButton } from "../../../mui_configurations/styled_components/buttons/styled_date_range_button_chart";
-import { ValidGranularities } from "../../../hooks";
+import { ValidGranularities } from "../../../common/types";
+
+import { Button, styled } from "@mui/material";
+
+const DateRangeButton = styled(Button)(() => ({
+  backgroundColor: "rgb(255,0,0)",
+  "&:hover": {
+    backgroundColor: "rgb(255,100,0)",
+  },
+}));
+
 interface DateRangeButtonInput {
   buttonText: string;
   granularityModifier: (newGranularity: ValidGranularities) => void;

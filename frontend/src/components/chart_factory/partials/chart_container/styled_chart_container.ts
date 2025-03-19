@@ -1,9 +1,9 @@
 import { Container, styled } from "@mui/material";
 
-export const ChartMiddleSectionContainer = styled(Container)(({ theme }) => ({
+export const ChartMiddleSectionContainer = styled(Container)(() => ({
   // backgroundColor: "cadetblue",
-  backgroundColor: theme.palette.test.main,
-  borderColor: theme.palette.secondary.dark,
+  backgroundColor: "rgb(255,0,0)",
+  borderColor: "rgb(255,0,0)",
   borderWidth: "5px",
   border: "solid",
 }));

@@ -2,9 +2,8 @@ import React from "react";
 import Tooltip from "@mui/material/Tooltip";
 import { IconButton, styled } from "@mui/material";
 
-const Icon = styled(IconButton)(({ theme }) => ({
-  //   backgroundColor: theme.palette.test.icon,
-  color: theme.palette.test.icon,
+const Icon = styled(IconButton)(() => ({
+  color: "rgb(255,0,0)",
   width: "14px",
   height: "14px",
   marginLeft: "6px",

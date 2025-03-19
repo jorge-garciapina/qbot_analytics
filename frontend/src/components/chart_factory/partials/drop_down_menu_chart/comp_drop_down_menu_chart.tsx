@@ -39,10 +39,10 @@ const Form = styled(FormControl)(() => ({
   // bord
 }));
 
-const InputLabelStyled = styled(InputLabel)(({ theme }) => ({
+const InputLabelStyled = styled(InputLabel)(() => ({
   marginTop: "-12px",
   marginLeft: "-8px",
-  color: theme.palette.test.black,
+  color: "rgb(255,0,0)",
   fontSize: "14px",
 }));
 
